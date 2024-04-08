@@ -11,9 +11,10 @@ import { FormsModule } from '@angular/forms';
 import { ScanSlideComponent } from './components/scan-slide/scan-slide.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { VisitorSlideComponent } from './components/visitor-slide/visitor-slide.component';
+import { StepperComponent } from './components/stepper/stepper.component';
 
 @NgModule({
-  declarations: [AppComponent, VisitPageComponent, ScanSlideComponent, NavbarComponent, VisitorSlideComponent],
+  declarations: [AppComponent, VisitPageComponent, ScanSlideComponent, NavbarComponent, VisitorSlideComponent, StepperComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

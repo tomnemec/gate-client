@@ -3,21 +3,28 @@ section {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background: rgb(233, 233, 233);
 }
 .hero {
   width: 450px;
   height: 450px;
   object-fit: cover;
+  border-radius: 5px 0 0 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 .instruction {
-  margin-top: 1rem;
+  border-radius: 0 5px 5px 0;
+  background: var(--white-color);
+  width: 450px;
+  height: 450px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 .instruction h1 {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 500;
   margin-bottom: 1rem;
 }

@@ -1,0 +1,24 @@
+nav {
+  background-color: var(--gunmetal-color);
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+}
+.title {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.logo {
+  width: 60px;
+  height: 60px;
+  object-fit: scale-down;
+  border-radius: 50%;
+  margin-right: 30px;
+}

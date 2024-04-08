@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --gunmetal-color: #28283c;
+  --white-color: #ffffff;
+  --black-white: #141414;
+  --mustard-color: #c8b400;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+}
+.btn-primary {
+  background-color: var(--mustard-color);
+  color: var(--white-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background-color: #b3a100;
+}

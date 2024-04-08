@@ -8,9 +8,10 @@ import { AppComponent } from './app.component';
 import { VisitPageComponent } from './pages/visit-page/visit-page.component';
 import { ApiClientService } from './services/api-client.service';
 import { FormsModule } from '@angular/forms';
+import { ScanSlideComponent } from './components/scan-slide/scan-slide.component';
 
 @NgModule({
-  declarations: [AppComponent, VisitPageComponent],
+  declarations: [AppComponent, VisitPageComponent, ScanSlideComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

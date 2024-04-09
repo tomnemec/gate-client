@@ -2,6 +2,7 @@
   <notification
     *ngIf="notifData.notifStatus"
     [notifData]="notifData"
+    @fadeInOut
   ></notification>
   <scan-slide
     *ngIf="slide === 1"

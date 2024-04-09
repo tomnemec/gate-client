@@ -13,18 +13,25 @@ export class TrainingSlideComponent implements OnInit {
   @Output() dataExported: EventEmitter<NotificationData> =
     new EventEmitter<NotificationData>();
 
+  triggerFadeout = false;
+
   constructor(private apiClient: ApiClientService) {}
 
   ngOnInit(): void {}
 
   createVisit() {
     this.triggerNotif({
-      notifStatus: 'success',
-      notifText: 'Visit created successfully!',
+      notifStatus: 'Welcome',
+      notifText: 'Visit registered successfully!',
     });
   }
 
   triggerNotif(notif: NotificationData) {
     this.dataExported.emit(notif);
+    this.triggerFadeout = true;
+    setTimeout(() => {
+      this.triggerFadeout = false;
+      this.dataExported.emit({ notifStatus: '', notifText: '' });
+    }, 3000);
   }
 }

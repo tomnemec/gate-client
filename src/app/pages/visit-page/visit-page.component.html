@@ -1,3 +1,5 @@
-<scan-slide> </scan-slide>
-<stepper></stepper>
-<visitor-slide></visitor-slide>
+<section>
+  <scan-slide *ngIf="slide===1"> </scan-slide>
+  <stepper></stepper>
+  <visitor-slide *ngIf="slide===2"></visitor-slide>
+</section>

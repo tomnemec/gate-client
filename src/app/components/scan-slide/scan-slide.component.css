@@ -1,1 +1,7 @@
-
+a {
+  color: var(--orange-color);
+  text-decoration: none;
+}
+.instruction {
+  gap: 10px;
+}

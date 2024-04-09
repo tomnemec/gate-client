@@ -1,5 +1,15 @@
 <section>
-  <scan-slide *ngIf="slide===1"> </scan-slide>
-  <stepper></stepper>
-  <visitor-slide *ngIf="slide===2"></visitor-slide>
+  <scan-slide
+    *ngIf="slide === 1"
+    (dataExported)="handleExportedData($event)"
+    @slideInOut
+  >
+  </scan-slide>
+  <visitor-slide
+    *ngIf="slide === 2"
+    (dataExported)="handleExportedData($event)"
+    @slideInOut
+  ></visitor-slide>
+  <training-slide *ngIf="slide === 3" @slideInOut></training-slide>
+  <stepper [slide]="slide"></stepper>
 </section>

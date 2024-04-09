@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'visitor-slide',
@@ -6,7 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./visitor-slide.component.css'],
 })
 export class VisitorSlideComponent implements OnInit {
-  constructor() {}
+  @Output() dataExported: EventEmitter<number> = new EventEmitter<number>();
 
   ngOnInit(): void {}
+
+  triggerTraining() {
+    this.dataExported.emit(3);
+    console.log('Slide after training');
+  }
 }

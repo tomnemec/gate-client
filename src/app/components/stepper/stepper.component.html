@@ -1,7 +1,7 @@
 <div class="stepper">
-  <span class="dot completed">1</span>
+  <span class="dot" [ngClass]="{ completed: slide >= 1 }">1</span>
   <span class="line"></span>
-  <span class="dot">2</span>
+  <span class="dot" [ngClass]="{ completed: slide >= 2 }">2</span>
   <span class="line"></span>
-  <span class="dot">3</span>
+  <span class="dot" [ngClass]="{ completed: slide >= 3 }">3</span>
 </div>

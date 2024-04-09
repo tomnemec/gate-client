@@ -82,6 +82,7 @@ section {
   align-items: center;
   height: 100vh;
   background: rgb(233, 233, 233);
+  overflow: hidden;
 }
 .row {
   padding: 1px;

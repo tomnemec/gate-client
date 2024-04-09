@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'scan-slide',
@@ -6,7 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./scan-slide.component.css'],
 })
 export class ScanSlideComponent implements OnInit {
+  @Output() dataExported: EventEmitter<number> = new EventEmitter<number>();
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  triggerScan() {
+    this.dataExported.emit(2);
+    console.log('Slide after triggerScan');
+  }
 }

@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ApiClientService {
   //localurl for testing
-  url = 'https://localhost:7018/api/';
+  url = 'http://localhost:5080/api/';
 
   //production url
   // url = '/gate/api/';

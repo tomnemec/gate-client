@@ -20,9 +20,26 @@ export class TrainingSlideComponent implements OnInit {
   ngOnInit(): void {}
 
   createVisit() {
-    this.triggerNotif({
-      notifStatus: 'Welcome',
-      notifText: 'Visit registered successfully!',
+    this.apiClient.create<SaveVisit>(this.visitToSave, 'visits').subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (error) => {
+        console.error(error);
+        console.log(error.error.message);
+        this.triggerNotif({
+          notifStatus: 'Error',
+          notifText: 'Visit registration failed!',
+          notifIcon: 'bi bi-x-circle',
+        });
+      },
+      complete: () => {
+        this.triggerNotif({
+          notifStatus: 'Welcome',
+          notifText: 'Visit registered successfully!',
+          notifIcon: 'bi bi-check-circle',
+        });
+      },
     });
   }
 
@@ -31,7 +48,7 @@ export class TrainingSlideComponent implements OnInit {
     this.triggerFadeout = true;
     setTimeout(() => {
       this.triggerFadeout = false;
-      this.dataExported.emit({ notifStatus: '', notifText: '' });
+      this.dataExported.emit({ notifStatus: '', notifText: '', notifIcon: '' });
     }, 3000);
   }
 }

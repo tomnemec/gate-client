@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { SaveVisit } from 'src/app/resources/save-visit';
 
 @Component({
   selector: 'visitor-slide',
@@ -7,10 +8,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class VisitorSlideComponent implements OnInit {
   @Output() dataExported: EventEmitter<number> = new EventEmitter<number>();
-
+  @Input() visitToSave: SaveVisit = {} as SaveVisit;
   ngOnInit(): void {}
 
   triggerTraining() {
+    console.log(this.visitToSave);
     this.dataExported.emit(3);
     console.log('Slide after training');
   }

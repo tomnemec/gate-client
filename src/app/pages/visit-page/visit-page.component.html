@@ -13,6 +13,7 @@
   <visitor-slide
     *ngIf="slide === 2"
     (dataExported)="handleExportedData($event)"
+    [visitToSave]="saveVisit"
     @slideInOut
   ></visitor-slide>
   <training-slide

@@ -15,7 +15,13 @@ export class VisitPageComponent implements OnInit {
   saveVisit: SaveVisit = {} as SaveVisit;
 
   ngOnInit(): void {
-    console.log(this.slide);
+    this.saveVisit = {
+      name: 'John Doe',
+      host: 'Jane Doe',
+      visitDate: new Date(),
+      visitTime: 'test',
+      visitStatus: 'new',
+    };
   }
   handleExportedData(slide: number) {
     this.slide = slide;

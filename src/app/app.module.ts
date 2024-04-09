@@ -15,6 +15,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { VisitorSlideComponent } from './components/visitor-slide/visitor-slide.component';
 import { StepperComponent } from './components/stepper/stepper.component';
 import { TrainingSlideComponent } from './components/training-slide/training-slide.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { TrainingSlideComponent } from './components/training-slide/training-sli
     VisitorSlideComponent,
     StepperComponent,
     TrainingSlideComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,

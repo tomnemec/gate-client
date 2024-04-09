@@ -1,4 +1,8 @@
 <section>
+  <notification
+    *ngIf="notifData.notifStatus"
+    [notifData]="notifData"
+  ></notification>
   <scan-slide
     *ngIf="slide === 1"
     (dataExported)="handleExportedData($event)"
@@ -10,6 +14,11 @@
     (dataExported)="handleExportedData($event)"
     @slideInOut
   ></visitor-slide>
-  <training-slide *ngIf="slide === 3" @slideInOut></training-slide>
+  <training-slide
+    *ngIf="slide === 3"
+    @slideInOut
+    [visitToSave]="saveVisit"
+    (dataExported)="handleNotifStatus($event)"
+  ></training-slide>
   <stepper [slide]="slide"></stepper>
 </section>

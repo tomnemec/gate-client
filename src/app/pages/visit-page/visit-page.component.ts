@@ -1,5 +1,7 @@
+import { SaveVisit } from './../../resources/save-visit';
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { NotificationData } from 'src/app/resources/notificationData';
 
 @Component({
   selector: 'app-visit-page',
@@ -25,12 +27,16 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 export class VisitPageComponent implements OnInit {
   slide = 1;
+  notifData = {} as NotificationData;
+  saveVisit: SaveVisit = {} as SaveVisit;
 
   ngOnInit(): void {
     console.log(this.slide);
   }
   handleExportedData(slide: number) {
     this.slide = slide;
-    // Handle the exported data here
+  }
+  handleNotifStatus(notifData: NotificationData) {
+    this.notifData = notifData;
   }
 }

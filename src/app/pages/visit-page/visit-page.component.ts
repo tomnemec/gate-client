@@ -17,10 +17,10 @@ export class VisitPageComponent implements OnInit {
   ngOnInit(): void {
     this.saveVisit = {
       name: 'John Doe',
-      host: 'Jane Doe',
+      host: 'Mark Johnson',
       visitDate: new Date(),
-      visitTime: 'test',
-      visitStatus: 'new',
+      visitTime: '8Hours',
+      visitStatus: 'Started',
     };
   }
   handleExportedData(slide: number) {

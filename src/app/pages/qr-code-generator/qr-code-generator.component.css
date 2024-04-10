@@ -1,0 +1,15 @@
+section {
+  flex-direction: column;
+  gap: 10px;
+}
+.form-group {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--orange-color);
+}

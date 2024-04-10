@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./qr-code-generator.component.css'],
 })
 export class QrCodeGeneratorComponent implements OnInit {
-  myAngularxQrCode: string = '';
-  constructor() {
-    this.myAngularxQrCode = 'Karel De Grote Hogeschool';
-  }
+  visitToSave: any = {
+    name: 'Mickey Mouse',
+    email: 'test@gmail.com',
+    companyName: 'Disney',
+    host: 'Donald Duck',
+  };
+
+  constructor() {}
 
   ngOnInit(): void {}
+  downloadQRCode() {}
 }

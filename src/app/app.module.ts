@@ -17,6 +17,7 @@ import { StepperComponent } from './components/stepper/stepper.component';
 import { TrainingSlideComponent } from './components/training-slide/training-slide.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { QrCodeGeneratorComponent } from './pages/qr-code-generator/qr-code-generator.component';
+import { QrCodeModule } from 'ng-qrcode';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { QrCodeGeneratorComponent } from './pages/qr-code-generator/qr-code-gene
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    QrCodeModule,
     AppRoutingModule,
     RouterModule.forRoot([
       { path: 'visits', component: VisitPageComponent, pathMatch: 'full' },

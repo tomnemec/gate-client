@@ -1,0 +1,41 @@
+<section>
+  <span class="title">Visit Details</span>
+  <div class="form-group">
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      placeholder="Full Name"
+      [(ngModel)]="visitToSave.name"
+    />
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      [(ngModel)]="visitToSave.email"
+    />
+    <input
+      type="text"
+      class="form-control"
+      id="companyName"
+      placeholder="Company Name"
+      [(ngModel)]="visitToSave.companyName"
+    />
+    <input
+      type="text"
+      class="form-control"
+      id="host"
+      placeholder="Contact Name"
+      [(ngModel)]="visitToSave.host"
+    />
+  </div>
+  <qr-code
+    #qrCodeCanvas
+    value="{{ visitToSave | json }}"
+    size="300"
+    errorCorrectionLevel="M"
+  ></qr-code>
+  <button class="btn btn-primary" (click)="downloadQRCode()">
+    Download QR Code
+  </button>
+</section>

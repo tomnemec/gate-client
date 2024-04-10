@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 
 @Component({
   selector: 'scan-slide',
@@ -7,13 +15,19 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class ScanSlideComponent implements OnInit {
   @Output() dataExported: EventEmitter<number> = new EventEmitter<number>();
+  @ViewChild('hiddenInput') hiddenInput: ElementRef | undefined;
+  scannedData: any;
 
   constructor() {}
 
   ngOnInit(): void {}
-
-  triggerScan() {
+  ngAfterViewInit(): void {
+    // Lock the focus on the hidden input field after the view is initialized
+    if (this.hiddenInput) {
+      this.hiddenInput.nativeElement.focus();
+    }
+  }
+  nextSlide() {
     this.dataExported.emit(2);
-    console.log('Slide after triggerScan');
   }
 }

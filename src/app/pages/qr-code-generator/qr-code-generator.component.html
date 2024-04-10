@@ -1,5 +1,11 @@
 <section>
   <span class="title">Visit Details</span>
+  <p>
+    Please fill in the following information to generate a QR code for your
+    visit. You can download the QR code and display it at the entrance of the
+    building.<br /><br />
+    You can type the data manually at the entrance terminal without the QR code.
+  </p>
   <div class="form-group">
     <input
       type="text"
@@ -12,6 +18,7 @@
       type="email"
       class="form-control"
       id="email"
+      placeholder="Email"
       [(ngModel)]="visitToSave.email"
     />
     <input
@@ -29,13 +36,28 @@
       [(ngModel)]="visitToSave.host"
     />
   </div>
-  <qr-code
-    #qrCodeCanvas
-    value="{{ visitToSave | json }}"
-    size="300"
-    errorCorrectionLevel="M"
-  ></qr-code>
-  <button class="btn btn-primary" (click)="downloadQRCode()">
-    Download QR Code
-  </button>
+  <qrcode
+    @fadeInOut
+    *ngIf="
+      visitToSave.name &&
+      visitToSave.email &&
+      visitToSave.companyName &&
+      visitToSave.host
+    "
+    (qrCodeURL)="onCodeChange($event)"
+    [qrdata]="visitToSave | json"
+    [width]="256"
+  ></qrcode>
+  <a
+    *ngIf="
+      visitToSave.name &&
+      visitToSave.email &&
+      visitToSave.companyName &&
+      visitToSave.host
+    "
+    class="btn btn-primary"
+    [href]="url"
+    download="QR code"
+    >Download QR code</a
+  >
 </section>

@@ -4,6 +4,7 @@
   --black-white: #141414;
   --mustard-color: #c8b400;
   --orange-color: #d36236;
+  --gray-color: rgb(104, 105, 105);
 }
 body {
   font-family: "Roboto", sans-serif;
@@ -16,6 +17,7 @@ body {
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 .btn-primary {
   background-color: var(--orange-color);

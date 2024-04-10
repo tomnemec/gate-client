@@ -9,7 +9,7 @@
 .training-text p {
   padding: 0 40px;
   height: 300px;
-  color: rgb(104, 105, 105);
+  color: var(--grey-color);
 }
 .training-text::-webkit-scrollbar {
   display: none;

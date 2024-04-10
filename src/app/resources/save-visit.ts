@@ -1,7 +1,8 @@
 export interface SaveVisit {
   name: string;
+  email: string;
+  companyName: string;
   host: string;
   visitDate: Date;
-  visitTime: string;
   visitStatus: string;
 }

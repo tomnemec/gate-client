@@ -3,8 +3,9 @@
   <article class="instruction">
     <h1>Visitor Details</h1>
     <input type="text" [(ngModel)]="visitToSave.name" />
+    <input type="email" [(ngModel)]="visitToSave.email" />
+    <input type="text" [(ngModel)]="visitToSave.companyName" />
     <input type="text" [(ngModel)]="visitToSave.host" />
-    <input type="text" [(ngModel)]="visitToSave.visitTime" />
     <div class="row">
       <button class="btn btn-primary" (click)="triggerTraining()">
         Continue

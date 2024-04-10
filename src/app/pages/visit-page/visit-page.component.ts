@@ -17,9 +17,10 @@ export class VisitPageComponent implements OnInit {
   ngOnInit(): void {
     this.saveVisit = {
       name: 'John Doe',
+      email: 'test@gmail.com',
+      companyName: 'Test Company',
       host: 'Mark Johnson',
       visitDate: new Date(),
-      visitTime: '8Hours',
       visitStatus: 'Started',
     };
   }

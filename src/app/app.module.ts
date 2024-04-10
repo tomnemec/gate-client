@@ -16,6 +16,7 @@ import { VisitorSlideComponent } from './components/visitor-slide/visitor-slide.
 import { StepperComponent } from './components/stepper/stepper.component';
 import { TrainingSlideComponent } from './components/training-slide/training-slide.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { QrCodeGeneratorComponent } from './pages/qr-code-generator/qr-code-generator.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { NotificationComponent } from './components/notification/notification.co
     StepperComponent,
     TrainingSlideComponent,
     NotificationComponent,
+    QrCodeGeneratorComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,11 @@ import { NotificationComponent } from './components/notification/notification.co
     AppRoutingModule,
     RouterModule.forRoot([
       { path: 'visits', component: VisitPageComponent, pathMatch: 'full' },
+      {
+        path: 'qr-generator',
+        component: QrCodeGeneratorComponent,
+        pathMatch: 'full',
+      },
     ]),
   ],
   providers: [ApiClientService],

@@ -6,7 +6,7 @@
     building.<br /><br />
     You can type the data manually at the entrance terminal without the QR code.
   </p>
-  <div class="form-group">
+  <div class="form-group" (change)="asignValues()">
     <input
       type="text"
       class="form-control"
@@ -45,7 +45,7 @@
       visitToSave.host
     "
     (qrCodeURL)="onCodeChange($event)"
-    [qrdata]="visitToSave | json"
+    [qrdata]="qrdata"
     [width]="256"
   ></qrcode>
   <a

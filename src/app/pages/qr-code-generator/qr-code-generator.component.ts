@@ -15,10 +15,15 @@ export class QrCodeGeneratorComponent implements OnInit {
     companyName: '',
     host: '',
   };
+  qrdata = '';
   url: SafeUrl = '';
 
   ngOnInit(): void {}
   onCodeChange(url: SafeUrl) {
     this.url = url;
+  }
+  asignValues() {
+    const valuesArray = Object.values(this.visitToSave);
+    this.qrdata = JSON.stringify(valuesArray);
   }
 }

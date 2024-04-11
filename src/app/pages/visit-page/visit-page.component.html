@@ -14,6 +14,7 @@
   <visitor-slide
     *ngIf="slide === 2"
     (dataExported)="handleExportedData($event)"
+    (notifExported)="handleNotifStatus($event)"
     [visitToSave]="saveVisit"
     @slideInOut
   ></visitor-slide>

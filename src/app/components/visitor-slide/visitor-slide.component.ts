@@ -15,9 +15,21 @@ export class VisitorSlideComponent implements OnInit {
   ngOnInit(): void {}
 
   triggerTraining() {
-    console.log(this.visitToSave);
-    this.dataExported.emit(3);
-    console.log('Slide after training');
+    if (
+      this.visitToSave.name === '' ||
+      this.visitToSave.email === '' ||
+      this.visitToSave.companyName === '' ||
+      this.visitToSave.host === ''
+    ) {
+      console.log('ups');
+      this.triggerNotif({
+        notifStatus: 'Error',
+        notifText: 'Please fill in all fields!',
+        notifIcon: 'bi bi-x-circle',
+      });
+    } else {
+      this.dataExported.emit(3);
+    }
   }
   triggerNotif(notif: NotificationData) {
     this.notifExported.emit(notif);

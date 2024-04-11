@@ -18,6 +18,8 @@ import { TrainingSlideComponent } from './components/training-slide/training-sli
 import { NotificationComponent } from './components/notification/notification.component';
 import { QrCodeGeneratorComponent } from './pages/qr-code-generator/qr-code-generator.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import { VisitsOverviewComponent } from './pages/visits-overview/visits-overview.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { QRCodeModule } from 'angularx-qrcode';
     ScanSlideComponent,
     NavbarComponent,
     VisitorSlideComponent,
+    VisitsOverviewComponent,
     StepperComponent,
     TrainingSlideComponent,
     NotificationComponent,
@@ -34,6 +37,7 @@ import { QRCodeModule } from 'angularx-qrcode';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    CommonModule,
     HttpClientModule,
     FormsModule,
     QRCodeModule,
@@ -43,6 +47,11 @@ import { QRCodeModule } from 'angularx-qrcode';
       {
         path: 'qr-generator',
         component: QrCodeGeneratorComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'visits-overview',
+        component: VisitsOverviewComponent,
         pathMatch: 'full',
       },
     ]),

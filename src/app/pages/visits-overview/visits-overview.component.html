@@ -1,0 +1,34 @@
+<section>
+  <h1>Visits Overview</h1>
+  <div class="row">
+    <input
+      #search
+      type="text"
+      class="search"
+      placeholder="...search"
+      (keyup)="handleSearch(search.value)"
+    />
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Company</th>
+        <th>Host</th>
+        <th>Visit Date</th>
+        <th>Visit Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let visit of tableData">
+        <td>{{ visit.name }}</td>
+        <td>{{ visit.email }}</td>
+        <td>{{ visit.companyName }}</td>
+        <td>{{ visit.host }}</td>
+        <td>{{ visit.visitDate }}</td>
+        <td>{{ visit.visitStatus }}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>

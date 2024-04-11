@@ -7,6 +7,7 @@
   <scan-slide
     *ngIf="slide === 1"
     (dataExported)="handleExportedData($event)"
+    (scanVisit)="handleScan($event)"
     @slideInOut
   >
   </scan-slide>
@@ -21,6 +22,7 @@
     @slideInOut
     [visitToSave]="saveVisit"
     (dataExported)="handleNotifStatus($event)"
+    (slideExported)="handleExportedData($event)"
   ></training-slide>
   <stepper [slide]="slide"></stepper>
 </section>

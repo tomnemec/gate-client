@@ -26,8 +26,17 @@ export class VisitPageComponent implements OnInit {
   }
   handleExportedData(slide: number) {
     this.slide = slide;
+    if (slide === 1) {
+      this.saveVisit = {} as SaveVisit;
+    }
   }
   handleNotifStatus(notifData: NotificationData) {
     this.notifData = notifData;
+    setTimeout(() => {
+      this.notifData = { notifStatus: '', notifText: '', notifIcon: '' };
+    }, 3000);
+  }
+  handleScan(visit: SaveVisit) {
+    this.saveVisit = visit;
   }
 }

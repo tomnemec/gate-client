@@ -12,6 +12,7 @@ export class TrainingSlideComponent implements OnInit {
   @Input() visitToSave: SaveVisit = {} as SaveVisit;
   @Output() dataExported: EventEmitter<NotificationData> =
     new EventEmitter<NotificationData>();
+  @Output() slideExported: EventEmitter<number> = new EventEmitter<number>();
 
   triggerFadeout = false;
 
@@ -39,6 +40,7 @@ export class TrainingSlideComponent implements OnInit {
           notifText: 'Visit registered successfully!',
           notifIcon: 'bi bi-check-circle',
         });
+        this.slideExported.emit(1);
       },
     });
   }
@@ -46,9 +48,5 @@ export class TrainingSlideComponent implements OnInit {
   triggerNotif(notif: NotificationData) {
     this.dataExported.emit(notif);
     this.triggerFadeout = true;
-    setTimeout(() => {
-      this.triggerFadeout = false;
-      this.dataExported.emit({ notifStatus: '', notifText: '', notifIcon: '' });
-    }, 3000);
   }
 }

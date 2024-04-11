@@ -1,4 +1,9 @@
-<input style="margin-top: 600px" #hiddenInput type="text" />
+<input
+  style="opacity: 0"
+  #hiddenInput
+  type="text"
+  (keydown.enter)="handleScan(hiddenInput.value)"
+/>
 <section class="card">
   <img src="assets/scan.jpg" alt="" class="hero-img" />
   <article class="instruction">

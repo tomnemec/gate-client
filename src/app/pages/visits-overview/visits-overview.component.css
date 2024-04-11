@@ -2,12 +2,7 @@ h1 {
   color: var(--orange-color);
   font-size: 2rem;
 }
-.search {
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  background: var(--white-color);
-}
+
 section {
   padding-top: 80px;
   flex-direction: column;

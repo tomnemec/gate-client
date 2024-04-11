@@ -4,10 +4,12 @@
     <input
       #search
       type="text"
-      class="search"
+      class="input-control"
       placeholder="...search"
       (keyup)="handleSearch(search.value)"
     />
+    <input type="date" class="input-control" [(ngModel)]="filter.fromDate" />
+    <input type="date" class="input-control" [(ngModel)]="filter.toDate" />
   </div>
   <table>
     <thead>
@@ -26,7 +28,7 @@
         <td>{{ visit.email }}</td>
         <td>{{ visit.companyName }}</td>
         <td>{{ visit.host }}</td>
-        <td>{{ visit.visitDate }}</td>
+        <td>{{ visit.visitDate | date }}</td>
         <td>{{ visit.visitStatus }}</td>
       </tr>
     </tbody>

@@ -10,6 +10,10 @@ import { ApiClientService } from 'src/app/services/api-client.service';
 export class VisitsOverviewComponent {
   visitsFromDB: Visit[] = [];
   tableData: Visit[] = [];
+  filter = {
+    fromDate: new Date(),
+    toDate: new Date(),
+  };
 
   constructor(private apiClient: ApiClientService) {}
 

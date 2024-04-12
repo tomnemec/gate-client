@@ -13,9 +13,12 @@ export class PaginatorComponent {
 
   totalPagesArray: number[] = [];
 
-  ngOnInit(): void {
-    this.totalPagesArray = Array(this.totalPages)
-      .fill(0)
-      .map((x, i) => i + 1);
+  ngOnChanges(changes: any): void {
+    console.log(changes);
+    if (changes.totalPages.currentValue) {
+      this.totalPagesArray = Array(this.totalPages)
+        .fill(0)
+        .map((x, i) => i + 1);
+    }
   }
 }

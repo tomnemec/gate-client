@@ -2,20 +2,22 @@ h1 {
   color: var(--orange-color);
   font-size: 2rem;
 }
-
+.container {
+  width: 80%;
+}
 section {
   padding-top: 80px;
   flex-direction: column;
   justify-content: start;
 }
 .row {
-  width: 80%;
+  width: 100%;
   justify-content: start;
 }
 table {
+  width: 100%;
   background: var(--white-color);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 80%;
   border-collapse: collapse;
   border: 1px solid #ddd;
   border-radius: 5px;

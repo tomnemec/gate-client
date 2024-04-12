@@ -20,6 +20,7 @@ import { QrCodeGeneratorComponent } from './pages/qr-code-generator/qr-code-gene
 import { QRCodeModule } from 'angularx-qrcode';
 import { VisitsOverviewComponent } from './pages/visits-overview/visits-overview.component';
 import { CommonModule } from '@angular/common';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CommonModule } from '@angular/common';
     VisitorSlideComponent,
     VisitsOverviewComponent,
     StepperComponent,
+    PaginatorComponent,
     TrainingSlideComponent,
     NotificationComponent,
     QrCodeGeneratorComponent,

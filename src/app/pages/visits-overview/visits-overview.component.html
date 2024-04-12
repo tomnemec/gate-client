@@ -1,36 +1,47 @@
 <section>
-  <h1>Visits Overview</h1>
-  <div class="row">
-    <input
-      #search
-      type="text"
-      class="input-control"
-      placeholder="...search"
-      (keyup)="handleSearch(search.value)"
-    />
-    <input type="date" class="input-control" [(ngModel)]="filter.fromDate" />
-    <input type="date" class="input-control" [(ngModel)]="filter.toDate" />
+  <div class="container">
+    <h1>Visits Overview</h1>
+    <div class="row">
+      <input
+        #search
+        type="text"
+        class="input-control"
+        placeholder="...search"
+        (keyup)="handleSearch(search.value)"
+      />
+      <input type="date" class="input-control" [(ngModel)]="filter.fromDate" />
+      <input type="date" class="input-control" [(ngModel)]="filter.toDate" />
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Company</th>
+          <th>Host</th>
+          <th>Visit Date</th>
+          <th>Visit Status</th>
+        </tr>
+      </thead>
+      <p style="text-align: center; width: 100%" *ngIf="tableData.length === 0">
+        No data
+      </p>
+      <tbody>
+        <tr *ngFor="let visit of tableData">
+          <td>{{ visit.name }}</td>
+          <td>{{ visit.email }}</td>
+          <td>{{ visit.companyName }}</td>
+          <td>{{ visit.host }}</td>
+          <td>{{ visit.visitDate | date }}</td>
+          <td>{{ visit.visitStatus }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <paginator
+      style="justify-self: start"
+      [totalPages]="totalPages"
+      [currentPage]="filter.page"
+      (pageChange)="handlePageChange()"
+    ></paginator>
   </div>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Company</th>
-        <th>Host</th>
-        <th>Visit Date</th>
-        <th>Visit Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let visit of tableData">
-        <td>{{ visit.name }}</td>
-        <td>{{ visit.email }}</td>
-        <td>{{ visit.companyName }}</td>
-        <td>{{ visit.host }}</td>
-        <td>{{ visit.visitDate | date }}</td>
-        <td>{{ visit.visitStatus }}</td>
-      </tr>
-    </tbody>
-  </table>
 </section>

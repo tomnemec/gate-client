@@ -1,0 +1,26 @@
+.paginator {
+  margin: 10px 0;
+  display: flex;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  gap: 5px;
+  padding: 5px;
+  width: fit-content;
+}
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #f1f1f1;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.page:not(.active):hover {
+  background-color: #f1f1f1;
+}
+.active {
+  background-color: var(--orange-color);
+  color: var(--white-color);
+}

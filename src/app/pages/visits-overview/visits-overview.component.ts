@@ -13,7 +13,10 @@ export class VisitsOverviewComponent {
   filter = {
     fromDate: new Date(),
     toDate: new Date(),
+    pageSize: 5,
+    page: 1,
   };
+  totalPages: number = 5;
 
   constructor(private apiClient: ApiClientService) {}
 
@@ -21,16 +24,22 @@ export class VisitsOverviewComponent {
     this.getVisits();
   }
   getVisits() {
-    this.apiClient.getAll<Visit[]>('visits').subscribe({
-      next: (visits) => {
-        this.visitsFromDB = visits;
-        this.handleSearch('');
-      },
-      error: (error) => {
-        console.error(error);
-      },
-    });
+    this.apiClient
+      .getAll<Visit[]>(
+        'visits?page=' + this.filter.page + '&pageSize=' + this.filter.pageSize
+      )
+      .subscribe({
+        next: (visits) => {
+          this.visitsFromDB = visits;
+          console.log(visits);
+          this.handleSearch('');
+        },
+        error: (error) => {
+          console.error(error);
+        },
+      });
   }
+  handlePageChange() {}
   handleSearch(searchTerm: string) {
     console.log(searchTerm);
     if (searchTerm === '') {

@@ -39,6 +39,7 @@
     </table>
     <paginator
       style="justify-self: start"
+      [handlePageChange]="handlePageChange.bind(this)"
       [totalPages]="totalPages"
       [currentPage]="filter.page"
     ></paginator>

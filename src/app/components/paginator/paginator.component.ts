@@ -9,6 +9,7 @@ import { Component, Input } from '@angular/core';
 export class PaginatorComponent {
   @Input() currentPage: number = 1;
   @Input() totalPages: number = 5;
+  @Input() handlePageChange: Function = () => {};
 
   totalPagesArray: number[] = [];
 
@@ -16,8 +17,5 @@ export class PaginatorComponent {
     this.totalPagesArray = Array(this.totalPages)
       .fill(0)
       .map((x, i) => i + 1);
-  }
-  handlePageChange(page: number) {
-    this.currentPage = page;
   }
 }

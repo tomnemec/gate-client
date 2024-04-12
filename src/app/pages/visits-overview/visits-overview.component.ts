@@ -39,7 +39,10 @@ export class VisitsOverviewComponent {
         },
       });
   }
-  handlePageChange() {}
+  handlePageChange(page: number) {
+    this.filter.page = page;
+    this.getVisits();
+  }
   handleSearch(searchTerm: string) {
     console.log(searchTerm);
     if (searchTerm === '') {

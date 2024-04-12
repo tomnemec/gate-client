@@ -1,5 +1,9 @@
 <div class="paginator">
-  <span class="page active">1</span>
-  <span class="page">1</span>
-  <span class="page">1</span>
+  <span
+    (click)="handlePageChange(p)"
+    *ngFor="let p of totalPagesArray"
+    class="page"
+    [ngClass]="{ active: currentPage == p }"
+    >{{ p }}</span
+  >
 </div>

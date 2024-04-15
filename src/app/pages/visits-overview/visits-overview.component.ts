@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { PaginatedResponse } from 'src/app/resources/paginatedResponse';
 import { Visit } from 'src/app/resources/visit';
 import { ApiClientService } from 'src/app/services/api-client.service';
 
@@ -26,13 +25,13 @@ export class VisitsOverviewComponent {
   }
   getVisits() {
     this.apiClient
-      .getAll<PaginatedResponse<Visit>>(
+      .getAll<Visit[]>(
         'visits?page=' + this.filter.page + '&pageSize=' + this.filter.pageSize
       )
       .subscribe({
         next: (visits) => {
-          this.visitsFromDB = visits.data;
-          this.totalPages = visits.totalPages;
+          this.visitsFromDB = visits;
+          //  this.totalPages = visits.totalPages;
           console.log(visits);
           console.log(this.totalPages);
           this.handleSearch('');
@@ -50,9 +49,11 @@ export class VisitsOverviewComponent {
     console.log(searchTerm);
     if (searchTerm === '') {
       this.tableData = this.visitsFromDB;
+
       return;
     } else {
       this.tableData = this.visitsFromDB.filter((visit) => {
+        this.totalPages = this.visitsFromDB.length / this.filter.pageSize;
         return (
           visit.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
           visit.companyName.toLowerCase().includes(searchTerm.toLowerCase()) ||

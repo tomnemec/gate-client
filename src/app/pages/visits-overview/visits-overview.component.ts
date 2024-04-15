@@ -5,7 +5,7 @@ import { ApiClientService } from 'src/app/services/api-client.service';
 @Component({
   selector: 'app-visits-overview',
   templateUrl: './visits-overview.component.html',
-  styleUrl: './visits-overview.component.css',
+  styleUrls: ['./visits-overview.component.css'],
 })
 export class VisitsOverviewComponent {
   visitsFromDB: Visit[] = [];
@@ -23,6 +23,7 @@ export class VisitsOverviewComponent {
   ngOnInit() {
     this.getVisits();
   }
+
   getVisits() {
     this.apiClient
       .getAll<Visit[]>(
@@ -31,36 +32,47 @@ export class VisitsOverviewComponent {
       .subscribe({
         next: (visits) => {
           this.visitsFromDB = visits;
-          //  this.totalPages = visits.totalPages;
-          console.log(visits);
-          console.log(this.totalPages);
-          this.handleSearch('');
+          this.handlePageChange(this.filter.page); // Update tableData after fetching new data
+          this.handleSearch(''); // Refresh tableData when new data is fetched
         },
         error: (error) => {
           console.error(error);
         },
       });
   }
+
   handlePageChange(page: number) {
     this.filter.page = page;
-    this.getVisits();
+    const startIndex = (page - 1) * this.filter.pageSize;
+    const endIndex = startIndex + this.filter.pageSize;
+    this.tableData = this.visitsFromDB.slice(startIndex, endIndex);
   }
-  handleSearch(searchTerm: string) {
-    console.log(searchTerm);
-    if (searchTerm === '') {
-      this.tableData = this.visitsFromDB;
 
-      return;
+  handleSearch(searchTerm: string) {
+    this.filter.page = 1;
+    if (searchTerm === '') {
+      // If search term is empty, show all visits
+      this.totalPages = Math.ceil(
+        this.visitsFromDB.length / this.filter.pageSize
+      );
+      this.tableData = this.visitsFromDB.slice(0, this.filter.pageSize);
     } else {
-      this.tableData = this.visitsFromDB.filter((visit) => {
-        this.totalPages = this.visitsFromDB.length / this.filter.pageSize;
-        return (
-          visit.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          visit.companyName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          visit.host.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          visit.email.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-      });
+      // Filter visits based on search term
+
+      this.tableData = this.visitsFromDB.filter((visit) =>
+        this.matchSearchTerm(visit, searchTerm)
+      );
     }
+  }
+
+  // Helper function to check if a visit matches the search term
+  matchSearchTerm(visit: Visit, searchTerm: string): boolean {
+    const normalizedSearchTerm = searchTerm.toLowerCase();
+    return (
+      visit.name.toLowerCase().includes(normalizedSearchTerm) ||
+      visit.companyName.toLowerCase().includes(normalizedSearchTerm) ||
+      visit.host.toLowerCase().includes(normalizedSearchTerm) ||
+      visit.email.toLowerCase().includes(normalizedSearchTerm)
+    );
   }
 }

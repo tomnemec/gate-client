@@ -38,7 +38,7 @@
       </tbody>
     </table>
     <paginator
-      *ngIf="visitsFromDB.length > 0"
+      *ngIf="visitsFromDB.length > 0 && totalPages > 0"
       style="justify-self: start"
       [handlePageChange]="handlePageChange.bind(this)"
       [totalPages]="totalPages"

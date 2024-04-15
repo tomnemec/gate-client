@@ -58,11 +58,17 @@ export class VisitsOverviewComponent {
       this.tableData = this.visitsFromDB.slice(0, this.filter.pageSize);
     } else {
       // Filter visits based on search term
-
+      this.totalPages = Math.ceil(
+        this.visitsFromDB.filter((visit) =>
+          this.matchSearchTerm(visit, searchTerm)
+        ).length / this.filter.pageSize
+      );
       this.tableData = this.visitsFromDB.filter((visit) =>
         this.matchSearchTerm(visit, searchTerm)
       );
     }
+    //!!!!!!BUG HERE!!!!!! NOT REFRESHIGN PAGINATOR TO VALUE
+    console.log(this.totalPages);
   }
 
   // Helper function to check if a visit matches the search term

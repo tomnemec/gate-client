@@ -11,6 +11,17 @@
   height: 300px;
   color: var(--grey-color);
 }
+.training-text ul {
+  padding: 0 40px;
+  height: 300px;
+  color: var(--grey-color);
+}
+.training-text li {
+  margin: 10px 0;
+}
+.training-text ul li::marker {
+  color: var(--orange-color);
+}
 .training-text::-webkit-scrollbar {
   display: none;
 }

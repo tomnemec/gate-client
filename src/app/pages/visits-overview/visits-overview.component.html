@@ -3,14 +3,20 @@
     <h1>Visits Overview</h1>
     <div class="row">
       <input
-        #search
+        [(ngModel)]="filter.searchTerm"
         type="text"
         class="input-control"
         placeholder="...search"
-        (keyup)="handleSearch(search.value)"
+        (keyup)="handleSearch()"
       />
       <input type="date" class="input-control" [(ngModel)]="filter.fromDate" />
-      <input type="date" class="input-control" [(ngModel)]="filter.toDate" />
+      <input
+        type="date"
+        class="input-control"
+        (ngModelChange)="getVisits()"
+        [(ngModel)]="filter.toDate"
+      />
+      <button (click)="getVisits()">test</button>
     </div>
     <table>
       <thead>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Visit } from 'src/app/resources/visit';
 import { ApiClientService } from 'src/app/services/api-client.service';
+import { getDateString } from 'src/app/services/helpers';
 
 @Component({
   selector: 'app-visits-overview',
@@ -11,10 +12,11 @@ export class VisitsOverviewComponent {
   visitsFromDB: Visit[] = [];
   tableData: Visit[] = [];
   filter = {
-    fromDate: new Date(),
-    toDate: new Date(),
+    fromDate: getDateString(new Date(), -7),
+    toDate: getDateString(new Date(), 7),
     pageSize: 5,
     page: 1,
+    searchTerm: '',
   };
   totalPages: number = 5;
 
@@ -25,15 +27,23 @@ export class VisitsOverviewComponent {
   }
 
   getVisits() {
+    console.log(this.filter);
     this.apiClient
       .getAll<Visit[]>(
-        'visits?page=' + this.filter.page + '&pageSize=' + this.filter.pageSize
+        'visits?page=' +
+          this.filter.page +
+          '&pageSize=' +
+          this.filter.pageSize +
+          '&fromDate=' +
+          this.filter.fromDate +
+          '&toDate=' +
+          this.filter.toDate
       )
       .subscribe({
         next: (visits) => {
           this.visitsFromDB = visits;
           this.handlePageChange(this.filter.page); // Update tableData after fetching new data
-          this.handleSearch(''); // Refresh tableData when new data is fetched
+          this.handleSearch(); // Refresh tableData when new data is fetched
         },
         error: (error) => {
           console.error(error);
@@ -43,32 +53,24 @@ export class VisitsOverviewComponent {
 
   handlePageChange(page: number) {
     this.filter.page = page;
-    const startIndex = (page - 1) * this.filter.pageSize;
-    const endIndex = startIndex + this.filter.pageSize;
-    this.tableData = this.visitsFromDB.slice(startIndex, endIndex);
+    this.handleSearch(); // Apply search and update tableData
   }
 
-  handleSearch(searchTerm: string) {
-    this.filter.page = 1;
-    if (searchTerm === '') {
+  handleSearch() {
+    if (this.filter.searchTerm === '') {
       // If search term is empty, show all visits
-      this.totalPages = Math.ceil(
-        this.visitsFromDB.length / this.filter.pageSize
-      );
-      this.tableData = this.visitsFromDB.slice(0, this.filter.pageSize);
+      this.tableData = this.visitsFromDB;
     } else {
       // Filter visits based on search term
-      this.totalPages = Math.ceil(
-        this.visitsFromDB.filter((visit) =>
-          this.matchSearchTerm(visit, searchTerm)
-        ).length / this.filter.pageSize
-      );
       this.tableData = this.visitsFromDB.filter((visit) =>
-        this.matchSearchTerm(visit, searchTerm)
+        this.matchSearchTerm(visit, this.filter.searchTerm)
       );
     }
-    //!!!!!!BUG HERE!!!!!! NOT REFRESHIGN PAGINATOR TO VALUE
-    console.log(this.totalPages);
+
+    // Apply pagination
+    const startIndex = (this.filter.page - 1) * this.filter.pageSize;
+    const endIndex = startIndex + this.filter.pageSize;
+    this.tableData = this.tableData.slice(startIndex, endIndex);
   }
 
   // Helper function to check if a visit matches the search term

@@ -1,3 +1,4 @@
+import { KeyRentalComponent } from './pages/key-rental/key-rental.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -21,12 +22,15 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { VisitsOverviewComponent } from './pages/visits-overview/visits-overview.component';
 import { CommonModule } from '@angular/common';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { KeyScanComponent } from './components/key-scan/key-scan.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     VisitPageComponent,
     ScanSlideComponent,
+    KeyRentalComponent,
+    KeyScanComponent,
     NavbarComponent,
     VisitorSlideComponent,
     VisitsOverviewComponent,
@@ -54,6 +58,11 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
       {
         path: 'visits-overview',
         component: VisitsOverviewComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'key-rental',
+        component: KeyRentalComponent,
         pathMatch: 'full',
       },
     ]),

@@ -1,0 +1,14 @@
+<section>
+  <notification
+    *ngIf="notifData.notifStatus"
+    [notifData]="notifData"
+    @fadeInOut
+  ></notification>
+  <key-scan
+    *ngIf="slide === 1"
+    (dataExported)="handleExportedData($event)"
+    (scanKey)="handleScan($event)"
+    @slideInOut
+  ></key-scan>
+  <stepper [slide]="slide"></stepper>
+</section>

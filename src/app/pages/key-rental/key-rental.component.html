@@ -7,6 +7,7 @@
   <key-scan
     [title]="'Key'"
     [imgName]="'key.jpg'"
+    [description]="getText('keyScan-eng')"
     *ngIf="slide === 1"
     (dataExported)="handleExportedData($event)"
     (scanKey)="handleScan($event)"
@@ -15,6 +16,7 @@
   <key-scan
     [title]="'RFID'"
     [imgName]="'card.jpg'"
+    [description]="getText('rfidScan-eng')"
     *ngIf="slide === 2"
     (dataExported)="handleExportedData($event)"
     (scanKey)="handleScan($event)"

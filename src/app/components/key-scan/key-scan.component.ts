@@ -16,6 +16,7 @@ export class KeyScanComponent {
   @ViewChild('hiddenInput') hiddenInput: ElementRef | undefined;
   @Input() title: string = '';
   @Input() imgName: string = '';
+  @Input() description: string = '';
   @Output() scanKey: EventEmitter<string> = new EventEmitter<string>();
   @Output() dataExported: EventEmitter<number> = new EventEmitter<number>();
 

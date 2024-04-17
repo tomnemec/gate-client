@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { fadeInOut, slideInOut } from 'src/app/animations/animations';
 import { NotificationData } from 'src/app/resources/notificationData';
 import { SaveKeyRental } from 'src/app/resources/save-keyRental';
-
+import { getText } from 'src/app/services/text-service';
 @Component({
   selector: 'key-rental',
   templateUrl: './key-rental.component.html',
@@ -13,6 +13,7 @@ export class KeyRentalComponent {
   slide = 1;
   notifData = {} as NotificationData;
   keyRentToSave = {} as SaveKeyRental;
+  getText = getText;
 
   handleExportedData(slide: number) {
     this.slide = slide;

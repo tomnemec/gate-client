@@ -7,11 +7,9 @@
 <section class="card">
   <img [src]="'assets/' + imgName" alt="" class="hero-img" />
   <article class="instruction">
-    <h1>Please scan key to proceed</h1>
+    <h1>Please scan {{ title }} to proceed</h1>
     <p>
-      To proceed please <b>scan code</b> and follow instruction.<br />
-      If code you dont have code or it is not working proceed with Manual
-      Scaning
+      {{ description }}
     </p>
     <button class="btn btn-primary" (click)="nextSlide()">Manual Typing</button>
   </article>

@@ -2,6 +2,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  Input,
   Output,
   ViewChild,
 } from '@angular/core';
@@ -13,6 +14,8 @@ import {
 })
 export class KeyScanComponent {
   @ViewChild('hiddenInput') hiddenInput: ElementRef | undefined;
+  @Input() title: string = '';
+  @Input() imgName: string = '';
   @Output() scanKey: EventEmitter<string> = new EventEmitter<string>();
   @Output() dataExported: EventEmitter<number> = new EventEmitter<number>();
 
@@ -41,6 +44,7 @@ export class KeyScanComponent {
   }
 
   nextSlide(): void {
-    this.dataExported.emit(2);
+    if (this.title === 'Key') this.dataExported.emit(2);
+    if (this.title === 'RFID') this.dataExported.emit(3);
   }
 }

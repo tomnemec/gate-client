@@ -5,7 +5,7 @@
   (keydown.enter)="handleScan(hiddenInput.value)"
 />
 <section class="card">
-  <img src="assets/scan.jpg" alt="" class="hero-img" />
+  <img [src]="'assets/' + imgName" alt="" class="hero-img" />
   <article class="instruction">
     <h1>Please scan key to proceed</h1>
     <p>

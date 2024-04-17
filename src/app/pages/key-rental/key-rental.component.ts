@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { fadeInOut, slideInOut } from 'src/app/animations/animations';
 import { NotificationData } from 'src/app/resources/notificationData';
+import { SaveKeyRental } from 'src/app/resources/save-keyRental';
 
 @Component({
   selector: 'key-rental',
@@ -11,13 +12,17 @@ import { NotificationData } from 'src/app/resources/notificationData';
 export class KeyRentalComponent {
   slide = 1;
   notifData = {} as NotificationData;
-  keyCode: string = '';
+  keyRentToSave = {} as SaveKeyRental;
 
   handleExportedData(slide: number) {
     this.slide = slide;
   }
   handleScan(code: string) {
-    this.keyCode = code;
-    console.log(this.keyCode);
+    if (this.slide === 1) {
+      this.keyRentToSave.keyCode = code;
+    }
+    if (this.slide === 2) {
+      this.keyRentToSave.RFID = code;
+    }
   }
 }

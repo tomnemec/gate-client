@@ -23,6 +23,7 @@ import { VisitsOverviewComponent } from './pages/visits-overview/visits-overview
 import { CommonModule } from '@angular/common';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { KeyScanComponent } from './components/key-scan/key-scan.component';
+import { KeyFormComponent } from './components/key-form/key-form.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { KeyScanComponent } from './components/key-scan/key-scan.component';
     ScanSlideComponent,
     KeyRentalComponent,
     KeyScanComponent,
+    KeyFormComponent,
     NavbarComponent,
     VisitorSlideComponent,
     VisitsOverviewComponent,

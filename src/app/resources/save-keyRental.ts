@@ -1,5 +1,5 @@
 export interface SaveKeyRental {
   RFID: string;
-  keyId: string;
+  keyCode: string;
   status: string;
 }

@@ -5,10 +5,21 @@
     @fadeInOut
   ></notification>
   <key-scan
+    [title]="'Key'"
+    [imgName]="'key.jpg'"
     *ngIf="slide === 1"
     (dataExported)="handleExportedData($event)"
     (scanKey)="handleScan($event)"
     @slideInOut
   ></key-scan>
+  <key-scan
+    [title]="'RFID'"
+    [imgName]="'card.jpg'"
+    *ngIf="slide === 2"
+    (dataExported)="handleExportedData($event)"
+    (scanKey)="handleScan($event)"
+    @slideInOut
+  ></key-scan>
+  <key-form [keyRent]="keyRentToSave" *ngIf="slide === 3"></key-form>
   <stepper [slide]="slide"></stepper>
 </section>

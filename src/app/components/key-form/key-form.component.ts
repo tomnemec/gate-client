@@ -14,6 +14,7 @@ export class KeyFormComponent {
     new EventEmitter<NotificationData>();
   constructor(private apiClinet: ApiClientService) {}
   createRent() {
+    this.keyRent.status = 'Rented';
     this.apiClinet
       .create<SaveKeyRental>(this.keyRent, 'key-rentals')
       .subscribe({
@@ -21,9 +22,10 @@ export class KeyFormComponent {
           console.log(data);
         },
         error: (err) => {
+          console.log(err);
           this.triggerNotif({
             notifStatus: 'Error',
-            notifText: 'Rent registration failed!',
+            notifText: err.error.message || 'Rent registration failed!',
             notifIcon: 'bi bi-x-circle',
           });
         },

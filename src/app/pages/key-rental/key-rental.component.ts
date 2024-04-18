@@ -26,4 +26,10 @@ export class KeyRentalComponent {
       this.keyRentToSave.RFID = code;
     }
   }
+  handleNotifStatus(notifData: NotificationData) {
+    this.notifData = notifData;
+    setTimeout(() => {
+      this.notifData = { notifStatus: '', notifText: '', notifIcon: '' };
+    }, 3000);
+  }
 }

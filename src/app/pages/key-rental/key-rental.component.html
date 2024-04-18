@@ -22,6 +22,10 @@
     (scanKey)="handleScan($event)"
     @slideInOut
   ></key-scan>
-  <key-form [keyRent]="keyRentToSave" *ngIf="slide === 3"></key-form>
+  <key-form
+    [keyRent]="keyRentToSave"
+    *ngIf="slide === 3"
+    (dataExported)="handleNotifStatus($event)"
+  ></key-form>
   <stepper [slide]="slide"></stepper>
 </section>

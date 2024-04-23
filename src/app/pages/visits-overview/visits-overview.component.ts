@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SaveVisit } from 'src/app/resources/save-visit';
 import { Visit } from 'src/app/resources/visit';
 import { ApiClientService } from 'src/app/services/api-client.service';
 import { getDateString } from 'src/app/services/helpers';
@@ -50,7 +51,30 @@ export class VisitsOverviewComponent {
         },
       });
   }
+  //implemented not tested
+  updateRent(visit: Visit,status:string)
+  {
+    let visitToSave ={
+      name:visit.name,
+      companyName:visit.companyName,
+      host:visit.host,
+      visitDate:visit.visitDate,
+      email:visit.email,
+      visitStatus:status
+    };
+    this.apiClient.update<SaveVisit>(visitToSave,'visits/'+ visit.id).subscribe({
 
+      next: (visit) => {
+        this.getVisits();
+      },
+      complete: () => {
+        console.log('Visit updated');
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
+  }
   handlePageChange(page: number) {
     this.filter.page = page;
     this.handleSearch(); // Apply search and update tableData

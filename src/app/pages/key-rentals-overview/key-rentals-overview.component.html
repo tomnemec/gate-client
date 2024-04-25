@@ -2,7 +2,8 @@
   <dialog-popup
     *ngIf="showPopUp"
     (popStatus)="handlePopStatus($event)"
-    [saveKeyRental]="rentToSave"
+    [objectForAction]="rentToSave"
+    apiEndpoint="key-rentals"
   ></dialog-popup>
   <div class="container">
     <h1>Rents Overview</h1>

@@ -1,6 +1,5 @@
-import { SaveKeyRental } from 'src/app/resources/save-keyRental';
+import { ApiClientService } from './../../services/api-client.service';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ApiClientService } from 'src/app/services/api-client.service';
 
 @Component({
   selector: 'dialog-popup',
@@ -9,22 +8,23 @@ import { ApiClientService } from 'src/app/services/api-client.service';
 })
 export class DialogPopupComponent {
   @Output() popStatus: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Input() saveKeyRental: SaveKeyRental = {} as SaveKeyRental;
+  @Input() objectForAction: Object = {} as Object;
+  @Input() apiEndpoint: string = '';
 
   constructor(private apiClient: ApiClientService) {}
   ngOnInit() {
-    console.log(this.saveKeyRental);
+    console.log(this.objectForAction);
   }
   closePopup() {
     this.popStatus.emit(false);
   }
-  updateRent() {
+  performAction() {
     this.apiClient
-      .update<SaveKeyRental>(this.saveKeyRental, 'key-rentals')
+      .update<Object>(this.objectForAction, this.apiEndpoint)
       .subscribe({
         next: (visit) => {},
         complete: () => {
-          console.log('Rent updated');
+          console.log('Record updated');
           this.popStatus.emit(false);
         },
         error: (error) => {

@@ -1,0 +1,22 @@
+.dialog-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--white-color);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+.dialog-title {
+  font-size: 1.5rem;
+  color: var(--orange-color);
+  margin-bottom: 20px;
+}
+.gp-1 {
+  margin-inline: 10px;
+}
+.pd1020 {
+  padding: 10px 20px;
+}

@@ -21,6 +21,8 @@ export class KeyRentalsOverviewComponent {
   };
   totalPages: number = 5;
 
+  showPopup = false;
+
   constructor(private apiClient: ApiClientService) {}
 
   ngOnInit() {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { KeyRental } from 'src/app/resources/keyRental';
+import { SaveKeyRental } from 'src/app/resources/save-keyRental';
 import { ApiClientService } from 'src/app/services/api-client.service';
 import { getDateString } from 'src/app/services/helpers';
 
@@ -55,5 +56,25 @@ export class KeyRentalsOverviewComponent {
       visit.key.room.toLowerCase().includes(normalizedSearchTerm) ||
       visit.rfid.toLowerCase().includes(normalizedSearchTerm)
     );
+  }
+  updateRent(rent: KeyRental, status: string) {
+    let rentToSave = {
+      keyCode: rent.key.code,
+      RFID: rent.rfid,
+      status: status,
+    };
+    console.log(rent);
+    console.log(rentToSave);
+    this.apiClient.update<SaveKeyRental>(rentToSave, 'key-rentals').subscribe({
+      next: (visit) => {
+        this.getRents();
+      },
+      complete: () => {
+        console.log('Rent updated');
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
   }
 }

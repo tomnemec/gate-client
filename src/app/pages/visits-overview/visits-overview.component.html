@@ -41,7 +41,14 @@
           <td>{{ visit.host }}</td>
           <td>{{ visit.visitDate | date }}</td>
           <td>{{ visit.visitStatus }}</td>
-          <td><button class="btn btn-primary" (click)="updateRent(visit,'Finished')">Return</button></td>
+          <td>
+            <button
+              class="btn btn-primary"
+              (click)="updateVisit(visit, 'Finished')"
+            >
+              Return
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>

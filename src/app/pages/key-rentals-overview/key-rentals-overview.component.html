@@ -25,6 +25,7 @@
           <th>Room</th>
           <th>Status</th>
           <th>RFID</th>
+          <th>Action</th>
         </tr>
       </thead>
       <p style="text-align: center; width: 100%" *ngIf="tableData.length === 0">
@@ -36,6 +37,16 @@
           <td>{{ rental.key.room }}</td>
           <td>{{ rental.status }}</td>
           <td>{{ rental.rfid }}</td>
+          <td>
+            <button
+              style="padding: 10px 20px"
+              *ngIf="rental.status === 'Rented'"
+              class="btn btn-primary"
+              (click)="updateRent(rental, 'Returned')"
+            >
+              Return
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>

@@ -26,6 +26,7 @@ table {
 }
 tr {
   border-bottom: 1px solid #ddd;
+  height: 60px;
 }
 th {
   text-align: left;

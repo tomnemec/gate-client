@@ -52,28 +52,28 @@ export class VisitsOverviewComponent {
       });
   }
   //implemented not tested
-  updateRent(visit: Visit,status:string)
-  {
-    let visitToSave ={
-      name:visit.name,
-      companyName:visit.companyName,
-      host:visit.host,
-      visitDate:visit.visitDate,
-      email:visit.email,
-      visitStatus:status
+  updateVisit(visit: Visit, status: string) {
+    let visitToSave = {
+      name: visit.name,
+      companyName: visit.companyName,
+      host: visit.host,
+      visitDate: visit.visitDate,
+      email: visit.email,
+      visitStatus: status,
     };
-    this.apiClient.update<SaveVisit>(visitToSave,'visits/'+ visit.id).subscribe({
-
-      next: (visit) => {
-        this.getVisits();
-      },
-      complete: () => {
-        console.log('Visit updated');
-      },
-      error: (error) => {
-        console.error(error);
-      },
-    });
+    this.apiClient
+      .update<SaveVisit>(visitToSave, 'visits/' + visit.id)
+      .subscribe({
+        next: (visit) => {
+          this.getVisits();
+        },
+        complete: () => {
+          console.log('Visit updated');
+        },
+        error: (error) => {
+          console.error(error);
+        },
+      });
   }
   handlePageChange(page: number) {
     this.filter.page = page;

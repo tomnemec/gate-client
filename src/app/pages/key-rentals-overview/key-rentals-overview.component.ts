@@ -12,6 +12,8 @@ import { getDateString } from 'src/app/services/helpers';
 export class KeyRentalsOverviewComponent {
   rentalsFromDB: KeyRental[] = [];
   tableData: KeyRental[] = [];
+  rentToSave: SaveKeyRental = {} as SaveKeyRental;
+
   filter = {
     fromDate: getDateString(new Date(), -7),
     toDate: getDateString(new Date(), 7),
@@ -21,7 +23,7 @@ export class KeyRentalsOverviewComponent {
   };
   totalPages: number = 5;
 
-  showPopup = false;
+  showPopUp = false;
 
   constructor(private apiClient: ApiClientService) {}
 
@@ -59,24 +61,15 @@ export class KeyRentalsOverviewComponent {
       visit.rfid.toLowerCase().includes(normalizedSearchTerm)
     );
   }
-  updateRent(rent: KeyRental, status: string) {
-    let rentToSave = {
-      keyCode: rent.key.code,
-      RFID: rent.rfid,
+  handlePopStatus(status: boolean) {
+    this.showPopUp = status;
+  }
+  openDialog(rental: KeyRental, status: string) {
+    this.rentToSave = {
+      keyCode: rental.key.code,
+      RFID: rental.rfid,
       status: status,
     };
-    console.log(rent);
-    console.log(rentToSave);
-    this.apiClient.update<SaveKeyRental>(rentToSave, 'key-rentals').subscribe({
-      next: (visit) => {
-        this.getRents();
-      },
-      complete: () => {
-        console.log('Rent updated');
-      },
-      error: (error) => {
-        console.error(error);
-      },
-    });
+    this.showPopUp = true;
   }
 }

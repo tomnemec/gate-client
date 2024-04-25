@@ -1,5 +1,9 @@
 <section>
-  <dialog-popup></dialog-popup>
+  <dialog-popup
+    *ngIf="showPopUp"
+    (popStatus)="handlePopStatus($event)"
+    [saveKeyRental]="rentToSave"
+  ></dialog-popup>
   <div class="container">
     <h1>Rents Overview</h1>
     <div class="row">
@@ -43,7 +47,7 @@
               style="padding: 10px 20px"
               *ngIf="rental.status === 'Rented'"
               class="btn btn-primary"
-              (click)="updateRent(rental, 'Returned')"
+              (click)="openDialog(rental, 'Returned')"
             >
               Return
             </button>

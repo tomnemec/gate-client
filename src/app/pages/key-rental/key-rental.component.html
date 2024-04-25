@@ -25,6 +25,7 @@
   <key-form
     [keyRent]="keyRentToSave"
     *ngIf="slide === 3"
+    (slideExported)="handleExportedData($event)"
     (dataExported)="handleNotifStatus($event)"
   ></key-form>
   <stepper [slide]="slide"></stepper>

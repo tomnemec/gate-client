@@ -13,6 +13,7 @@ export class KeyRentalComponent {
   slide = 1;
   notifData = {} as NotificationData;
   keyRentToSave = {} as SaveKeyRental;
+
   getText = getText;
 
   handleExportedData(slide: number) {

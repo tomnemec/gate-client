@@ -1,9 +1,11 @@
 <section class="card">
-  <img src="assets/profile.png" alt="" class="hero-img" />
+  <img src="assets/record.jpg" alt="" class="hero-img" />
   <article class="instruction">
-    <h1>Visitor Details</h1>
-    <input type="text" [(ngModel)]="keyRent.keyCode" />
-    <input type="text" [(ngModel)]="keyRent.RFID" />
+    <h1>Key Rent Details</h1>
+    <label class="form-label" for="keycode">KeyCode</label>
+    <input id="keycode" type="text" [(ngModel)]="keyRent.keyCode" />
+    <label class="form-label" for="rfid">RFID</label>
+    <input id="rfid" type="text" [(ngModel)]="keyRent.RFID" />
     <div class="row">
       <button class="btn btn-primary" (click)="createRent()">Rent Key</button>
     </div>

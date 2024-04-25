@@ -1,0 +1,43 @@
+<section>
+  <div class="container">
+    <h1>Rents Overview</h1>
+    <div class="row">
+      <input
+        [(ngModel)]="filter.searchTerm"
+        type="text"
+        class="input-control"
+        placeholder="...search"
+        (keyup)="handleSearch()"
+      />
+      <input type="date" class="input-control" [(ngModel)]="filter.fromDate" />
+      <input
+        type="date"
+        class="input-control"
+        (ngModelChange)="getRents()"
+        [(ngModel)]="filter.toDate"
+      />
+      <button (click)="getRents()">test</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Key Code</th>
+          <th>Room</th>
+          <th>Status</th>
+          <th>RFID</th>
+        </tr>
+      </thead>
+      <p style="text-align: center; width: 100%" *ngIf="tableData.length === 0">
+        No data
+      </p>
+      <tbody>
+        <tr *ngFor="let rental of tableData">
+          <td>{{ rental.key.code }}</td>
+          <td>{{ rental.key.room }}</td>
+          <td>{{ rental.status }}</td>
+          <td>{{ rental.rfid }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

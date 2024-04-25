@@ -24,6 +24,7 @@ import { CommonModule } from '@angular/common';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { KeyScanComponent } from './components/key-scan/key-scan.component';
 import { KeyFormComponent } from './components/key-form/key-form.component';
+import { KeyRentalsOverviewComponent } from './pages/key-rentals-overview/key-rentals-overview.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { KeyFormComponent } from './components/key-form/key-form.component';
     VisitPageComponent,
     ScanSlideComponent,
     KeyRentalComponent,
+    KeyRentalsOverviewComponent,
     KeyScanComponent,
     KeyFormComponent,
     NavbarComponent,
@@ -65,6 +67,11 @@ import { KeyFormComponent } from './components/key-form/key-form.component';
       {
         path: 'key-rental',
         component: KeyRentalComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'key-rentals-overview',
+        component: KeyRentalsOverviewComponent,
         pathMatch: 'full',
       },
     ]),

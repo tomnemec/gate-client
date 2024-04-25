@@ -12,6 +12,8 @@ export class KeyFormComponent {
   @Input() keyRent: SaveKeyRental = {} as SaveKeyRental;
   @Output() dataExported: EventEmitter<NotificationData> =
     new EventEmitter<NotificationData>();
+  @Output() slideExported: EventEmitter<number> = new EventEmitter<number>();
+
   constructor(private apiClinet: ApiClientService) {}
   createRent() {
     this.keyRent.status = 'Rented';
@@ -25,7 +27,7 @@ export class KeyFormComponent {
           console.log(err);
           this.triggerNotif({
             notifStatus: 'Error',
-            notifText: err.error.message || 'Rent registration failed!',
+            notifText: err.error || 'Rent registration failed!',
             notifIcon: 'bi bi-x-circle',
           });
         },
@@ -35,6 +37,7 @@ export class KeyFormComponent {
             notifText: 'Rent registered successfully!',
             notifIcon: 'bi bi-check-circle',
           });
+          this.slideExported.emit(1);
         },
       });
   }

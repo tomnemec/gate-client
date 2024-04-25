@@ -24,6 +24,7 @@ import { CommonModule } from '@angular/common';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { KeyScanComponent } from './components/key-scan/key-scan.component';
 import { KeyFormComponent } from './components/key-form/key-form.component';
+import { HomeComponent } from './pages/home/home.component';
 import { KeyRentalsOverviewComponent } from './pages/key-rentals-overview/key-rentals-overview.component';
 
 @NgModule({
@@ -35,6 +36,7 @@ import { KeyRentalsOverviewComponent } from './pages/key-rentals-overview/key-re
     KeyRentalsOverviewComponent,
     KeyScanComponent,
     KeyFormComponent,
+    HomeComponent,
     NavbarComponent,
     VisitorSlideComponent,
     VisitsOverviewComponent,
@@ -57,6 +59,11 @@ import { KeyRentalsOverviewComponent } from './pages/key-rentals-overview/key-re
       {
         path: 'qr-generator',
         component: QrCodeGeneratorComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: '',
+        component: HomeComponent,
         pathMatch: 'full',
       },
       {

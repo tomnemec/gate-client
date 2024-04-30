@@ -1,0 +1,12 @@
+<section>
+  <h1>Settings</h1>
+  <label class="form-label" for="">Safety Instructions:</label>
+  <textarea
+    [(ngModel)]="safetyInstructions"
+    name=""
+    id=""
+    cols="80"
+    rows="20"
+  ></textarea>
+  <button class="btn btn-primary" (click)="updateSettings()">Save</button>
+</section>

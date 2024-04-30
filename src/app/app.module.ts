@@ -27,6 +27,7 @@ import { QrCodeGeneratorComponent } from './pages/qr-code-generator/qr-code-gene
 import { VisitPageComponent } from './pages/visit-page/visit-page.component';
 import { VisitsOverviewComponent } from './pages/visits-overview/visits-overview.component';
 import { ApiClientService } from './services/api-client.service';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ApiClientService } from './services/api-client.service';
     PaginatorComponent,
     TrainingSlideComponent,
     NotificationComponent,
+    SettingsComponent,
     QrCodeGeneratorComponent,
   ],
   imports: [
@@ -81,6 +83,12 @@ import { ApiClientService } from './services/api-client.service';
       {
         path: 'key-rentals-overview',
         component: KeyRentalsOverviewComponent,
+        pathMatch: 'full',
+      },
+
+      {
+        path: 'settings',
+        component: SettingsComponent,
         pathMatch: 'full',
       },
     ]),

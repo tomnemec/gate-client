@@ -9,6 +9,10 @@ import { ApiClientService } from 'src/app/services/api-client.service';
 })
 export class KeysAdministrationComponent {
   keys: Key[] = [];
+  keyToSave: Key = {
+    code: '444444',
+    room: 'Jídelna',
+  };
   filter = {
     searchTerm: '',
   };
@@ -24,6 +28,20 @@ export class KeysAdministrationComponent {
       },
       error: (error) => {
         console.error(error);
+      },
+    });
+  }
+  createKeyRecord() {
+    console.log('trigger');
+    this.apiClient.create<Key>(this.keyToSave, 'keys').subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (error) => {
+        console.error(error);
+      },
+      complete: () => {
+        this.getKeys();
       },
     });
   }

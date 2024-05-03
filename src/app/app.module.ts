@@ -28,6 +28,7 @@ import { VisitPageComponent } from './pages/visit-page/visit-page.component';
 import { VisitsOverviewComponent } from './pages/visits-overview/visits-overview.component';
 import { ApiClientService } from './services/api-client.service';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { KeysAdministrationComponent } from './pages/keys-administration/keys-administration.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
     ScanSlideComponent,
     KeyRentalComponent,
     KeyRentalsOverviewComponent,
+    KeysAdministrationComponent,
     KeyScanComponent,
     KeyFormComponent,
     HomeComponent,
@@ -85,7 +87,11 @@ import { SettingsComponent } from './pages/settings/settings.component';
         component: KeyRentalsOverviewComponent,
         pathMatch: 'full',
       },
-
+      {
+        path: 'key-administration',
+        component: KeysAdministrationComponent,
+        pathMatch: 'full',
+      },
       {
         path: 'settings',
         component: SettingsComponent,

@@ -1,0 +1,38 @@
+<section>
+  <div class="container">
+    <h1>Keys Overview</h1>
+    <div class="row">
+      <input
+        [(ngModel)]="filter.searchTerm"
+        type="text"
+        class="input-control"
+        placeholder="...search"
+      />
+
+      <button (click)="getKeys()">test</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Key Code</th>
+          <th>Room</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <p style="text-align: center; width: 100%" *ngIf="keys.length === 0">
+        No data
+      </p>
+      <tbody>
+        <tr *ngFor="let key of keys">
+          <td>{{ key.code }}</td>
+          <td>{{ key.room }}</td>
+          <td>
+            <button style="padding: 10px 20px" class="btn btn-primary">
+              Return
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

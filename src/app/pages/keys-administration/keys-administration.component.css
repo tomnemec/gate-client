@@ -5,6 +5,9 @@ h1 {
 .container {
   width: 80%;
 }
+.danger {
+  background: red;
+}
 section {
   padding-top: 80px;
   flex-direction: column;

@@ -10,8 +10,8 @@ import { ApiClientService } from 'src/app/services/api-client.service';
 export class KeysAdministrationComponent {
   keys: Key[] = [];
   keyToSave: Key = {
-    code: '444444',
-    room: 'Jídelna',
+    code: '',
+    room: '',
   };
   filter = {
     searchTerm: '',
@@ -32,8 +32,20 @@ export class KeysAdministrationComponent {
     });
   }
   createKeyRecord() {
-    console.log('trigger');
     this.apiClient.create<Key>(this.keyToSave, 'keys').subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (error) => {
+        console.error(error);
+      },
+      complete: () => {
+        this.getKeys();
+      },
+    });
+  }
+  deleteKeyRecord(keyCode: string) {
+    this.apiClient.delete(`keys/${keyCode}`).subscribe({
       next: (response) => {
         console.log(response);
       },

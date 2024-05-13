@@ -32,7 +32,11 @@
           <td>{{ key.code }}</td>
           <td>{{ key.room }}</td>
           <td>
-            <button style="padding: 10px 20px" class="btn btn-primary danger">
+            <button
+              style="padding: 10px 20px"
+              class="btn btn-primary danger"
+              (click)="deleteKeyRecord(key.code)"
+            >
               Delete
             </button>
           </td>

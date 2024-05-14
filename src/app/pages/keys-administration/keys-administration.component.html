@@ -1,7 +1,6 @@
 <section>
   <div class="container">
     <h1>Keys Overview</h1>
-    {{ keyToSave | json }}
     <div class="row">
       <input
         [(ngModel)]="filter.searchTerm"
@@ -9,11 +8,8 @@
         class="input-control"
         placeholder="...search"
       />
-      <button (click)="getKeys()">test</button>
-      <label for="">KeyCode</label>
-      <input type="text" [(ngModel)]="keyToSave.code" />
-      <label for="">Key Room</label>
-      <input type="text" [(ngModel)]="keyToSave.room" />
+      <input placeholder="Key Code" type="text" [(ngModel)]="keyToSave.code" />
+      <input placeholder="Key Room" type="text" [(ngModel)]="keyToSave.room" />
       <button class="btn btn-primary" (click)="createKeyRecord()">+</button>
     </div>
     <table>
@@ -38,6 +34,13 @@
               (click)="deleteKeyRecord(key.code)"
             >
               Delete
+            </button>
+            <button
+              style="padding: 10px 20px"
+              class="btn btn-primary"
+              (click)="updateKeyRecord()"
+            >
+              Update
             </button>
           </td>
         </tr>

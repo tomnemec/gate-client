@@ -44,6 +44,19 @@ export class KeysAdministrationComponent {
       },
     });
   }
+  updateKeyRecord() {
+    this.apiClient.update<Key>(this.keyToSave, 'keys').subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (error) => {
+        console.error(error);
+      },
+      complete: () => {
+        this.getKeys();
+      },
+    });
+  }
   deleteKeyRecord(keyCode: string) {
     this.apiClient.delete(`keys/${keyCode}`).subscribe({
       next: (response) => {

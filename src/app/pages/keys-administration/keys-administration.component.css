@@ -7,6 +7,10 @@ h1 {
 }
 .danger {
   background: red;
+  margin-right: 10px;
+}
+.danger:hover {
+  background: darkred;
 }
 section {
   padding-top: 80px;
@@ -16,6 +20,9 @@ section {
 .row {
   width: 100%;
   justify-content: start;
+}
+.row input {
+  margin: 0;
 }
 table {
   width: 100%;

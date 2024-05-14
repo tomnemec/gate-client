@@ -2,6 +2,9 @@ h1 {
   color: var(--orange-color);
   font-size: 2rem;
 }
+.btn {
+  padding: 10px 20px;
+}
 .container {
   width: 80%;
 }
@@ -20,6 +23,7 @@ section {
 .row {
   width: 100%;
   justify-content: start;
+  margin-bottom: 15px;
 }
 .row input {
   margin: 0;

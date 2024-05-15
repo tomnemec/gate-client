@@ -26,6 +26,7 @@ export class DialogPopupComponent {
         complete: () => {
           console.log('Record updated');
           this.popStatus.emit(false);
+          window.location.reload();
         },
         error: (error) => {
           console.error(error);

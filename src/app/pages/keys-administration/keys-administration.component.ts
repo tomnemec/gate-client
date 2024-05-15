@@ -9,10 +9,14 @@ import { ApiClientService } from 'src/app/services/api-client.service';
 })
 export class KeysAdministrationComponent {
   keys: Key[] = [];
+  keyForAction: Key = {} as Key;
+  dialogAction: string = '';
+  apiEndpoint: string = '';
   keyToSave: Key = {
     code: '',
     room: '',
   };
+  showPopUp = true;
   filter = {
     searchTerm: '',
   };
@@ -30,6 +34,17 @@ export class KeysAdministrationComponent {
         console.error(error);
       },
     });
+  }
+  openDialog(key: Key, action: string) {
+    this.dialogAction = action;
+    if (action === 'delete') {
+      this.keyForAction = key;
+      this.apiEndpoint = 'keys' + '/' + key.code;
+    } else if (action === 'update') {
+      this.keyForAction = this.keyToSave;
+      this.apiEndpoint = 'keys';
+    }
+    this.showPopUp = true;
   }
   createKeyRecord() {
     this.apiClient.create<Key>(this.keyToSave, 'keys').subscribe({
@@ -69,5 +84,8 @@ export class KeysAdministrationComponent {
         this.getKeys();
       },
     });
+  }
+  handlePopStatus(status: boolean) {
+    this.showPopUp = status;
   }
 }

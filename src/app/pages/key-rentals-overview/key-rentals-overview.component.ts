@@ -23,12 +23,13 @@ export class KeyRentalsOverviewComponent {
   };
   totalPages: number = 5;
 
-  showPopUp = false;
+  showPopUp: boolean = false;
 
   constructor(private apiClient: ApiClientService) {}
 
   ngOnInit() {
     this.getRents();
+    console.log(this.showPopUp);
   }
   getRents() {
     this.apiClient.getAll<KeyRental[]>('key-rentals').subscribe({

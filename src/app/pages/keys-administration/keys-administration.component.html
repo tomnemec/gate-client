@@ -1,4 +1,11 @@
 <section>
+  <dialog-popup
+    *ngIf="showPopUp"
+    (popStatus)="handlePopStatus($event)"
+    [objectForAction]="keyForAction"
+    [apiEndpoint]="apiEndpoint"
+    [action]="dialogAction"
+  ></dialog-popup>
   <div class="container">
     <h1>Keys Overview</h1>
     <div class="row">
@@ -30,14 +37,14 @@
             <button
               style="padding: 10px 20px"
               class="btn btn-primary danger"
-              (click)="deleteKeyRecord(key.code)"
+              (click)="openDialog(key, 'delete')"
             >
               Delete
             </button>
             <button
               style="padding: 10px 20px"
               class="btn btn-primary"
-              (click)="updateKeyRecord()"
+              (click)="openDialog(key, 'update')"
             >
               Update
             </button>

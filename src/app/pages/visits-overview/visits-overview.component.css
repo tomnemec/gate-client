@@ -35,3 +35,12 @@ th {
 td {
   padding: 8px;
 }
+.refresh {
+  padding: 10px 20px;
+}
+.row {
+  margin-bottom: 20px;
+}
+.row input {
+  margin-bottom: 0;
+}

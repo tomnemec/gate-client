@@ -20,7 +20,9 @@
         (ngModelChange)="getVisits()"
         [(ngModel)]="filter.toDate"
       />
-      <button class="btn btn-primary" (click)="getVisits()">Refresh</button>
+      <button class="btn btn-primary refresh" (click)="getVisits()">
+        Refresh
+      </button>
     </div>
     <table>
       <thead>

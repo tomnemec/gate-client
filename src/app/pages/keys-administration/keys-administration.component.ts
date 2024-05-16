@@ -16,7 +16,7 @@ export class KeysAdministrationComponent {
     code: '',
     room: '',
   };
-  showPopUp = true;
+  showPopUp = false;
   filter = {
     searchTerm: '',
   };

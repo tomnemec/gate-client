@@ -10,6 +10,7 @@ import { NotificationData } from 'src/app/resources/notificationData';
   animations: [slideInOut, fadeInOut],
 })
 export class VisitPageComponent implements OnInit {
+  language = 'en';
   slide = 1;
   notifData = {} as NotificationData;
   saveVisit: SaveVisit = {} as SaveVisit;
@@ -29,5 +30,8 @@ export class VisitPageComponent implements OnInit {
   }
   handleScan(visit: SaveVisit) {
     this.saveVisit = visit;
+  }
+  languageChange(language: string) {
+    this.language = language;
   }
 }

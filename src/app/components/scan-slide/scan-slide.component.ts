@@ -15,6 +15,7 @@ import { SaveVisit } from 'src/app/resources/save-visit';
   styleUrls: ['./scan-slide.component.css'],
 })
 export class ScanSlideComponent implements OnInit {
+  @Input() language = 'cz';
   @Output() dataExported: EventEmitter<number> = new EventEmitter<number>();
   @Output() scanVisit: EventEmitter<SaveVisit> = new EventEmitter<SaveVisit>();
   @ViewChild('hiddenInput') hiddenInput: ElementRef | undefined;

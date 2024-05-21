@@ -1,4 +1,17 @@
 <section>
+  <div class="languages">
+    <img
+      (click)="languageChange('cz')"
+      src="./assets/cz.png"
+      alt=""
+      class="flag"
+    /><img
+      (click)="languageChange('uk')"
+      src="./assets/uk.png"
+      alt=""
+      class="flag"
+    />
+  </div>
   <notification
     *ngIf="notifData.notifStatus"
     [notifData]="notifData"
@@ -6,6 +19,7 @@
   ></notification>
   <scan-slide
     *ngIf="slide === 1"
+    [language]="language"
     (dataExported)="handleExportedData($event)"
     (scanVisit)="handleScan($event)"
     @slideInOut
@@ -13,6 +27,7 @@
   </scan-slide>
   <visitor-slide
     *ngIf="slide === 2"
+    [language]="language"
     (dataExported)="handleExportedData($event)"
     (notifExported)="handleNotifStatus($event)"
     [visitToSave]="saveVisit"
@@ -20,6 +35,7 @@
   ></visitor-slide>
   <training-slide
     *ngIf="slide === 3"
+    [language]="language"
     @slideInOut
     [visitToSave]="saveVisit"
     (dataExported)="handleNotifStatus($event)"

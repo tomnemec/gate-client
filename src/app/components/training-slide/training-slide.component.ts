@@ -11,6 +11,7 @@ import { ApiClientService } from 'src/app/services/api-client.service';
 })
 export class TrainingSlideComponent implements OnInit {
   @Input() visitToSave: SaveVisit = {} as SaveVisit;
+  @Input() language = 'cz';
   @Output() dataExported: EventEmitter<NotificationData> =
     new EventEmitter<NotificationData>();
   @Output() slideExported: EventEmitter<number> = new EventEmitter<number>();

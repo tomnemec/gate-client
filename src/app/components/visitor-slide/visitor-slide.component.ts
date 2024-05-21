@@ -9,6 +9,7 @@ import { SaveVisit } from 'src/app/resources/save-visit';
 })
 export class VisitorSlideComponent implements OnInit {
   @Output() dataExported: EventEmitter<number> = new EventEmitter<number>();
+  @Input() language = 'cz';
   @Input() visitToSave: SaveVisit = {} as SaveVisit;
   @Output() notifExported: EventEmitter<NotificationData> =
     new EventEmitter<NotificationData>();

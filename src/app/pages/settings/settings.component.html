@@ -4,9 +4,17 @@
     Text settings for the application. Update the text and click "Save" to save
     the changes.
   </p>
-  <label class="form-label" for="">Safety Instructions:</label>
+  <label class="form-label" for="">Safety Instructions CZ:</label>
   <textarea
-    [(ngModel)]="safetyInstructions"
+    [(ngModel)]="safetyInstructionsCZ"
+    name=""
+    id=""
+    cols="80"
+    rows="20"
+  ></textarea>
+  <label class="form-label" for="">Safety Instructions EN:</label>
+  <textarea
+    [(ngModel)]="safetyInstructionsEN"
     name=""
     id=""
     cols="80"

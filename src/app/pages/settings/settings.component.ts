@@ -9,7 +9,8 @@ import { ApiClientService } from 'src/app/services/api-client.service';
 })
 export class SettingsComponent {
   constructor(private apiClient: ApiClientService) {}
-  safetyInstructions: string = '';
+  safetyInstructionsCZ: string = '';
+  safetyInstructionsEN: string = '';
   ngOnInit() {
     this.getSettings();
   }
@@ -17,7 +18,8 @@ export class SettingsComponent {
     this.apiClient.getAll<Settings[]>('settings').subscribe({
       next: (settings) => {
         console.log(settings);
-        this.safetyInstructions = settings[0].safetyInstructions;
+        this.safetyInstructionsCZ = settings[0].safetyInstructionsCZ;
+        this.safetyInstructionsEN = settings[0].safetyInstructionsEN;
       },
       complete: () => {
         console.log('Settings fetched');
@@ -30,7 +32,8 @@ export class SettingsComponent {
   updateSettings() {
     let settingsToUpdate: Settings = {
       id: 1,
-      safetyInstructions: this.safetyInstructions,
+      safetyInstructionsCZ: this.safetyInstructionsCZ,
+      safetyInstructionsEN: this.safetyInstructionsEN,
     };
     this.apiClient.update<Settings>(settingsToUpdate, 'settings').subscribe({
       next: (settings) => {

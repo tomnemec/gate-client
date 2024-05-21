@@ -23,10 +23,12 @@ p {
   margin: 10px 0;
 }
 .training-text ul li::marker {
-  color: var(--orange-color);
+  color: gray;
+  width: 1em;
+  border-radius: 5px;
 }
 .training-text::-webkit-scrollbar {
-  display: none;
+  width: 5px;
 }
 .title {
   font-size: 2em;
@@ -36,4 +38,5 @@ p {
 .instruction {
   text-align: center;
   font-weight: 400;
+  padding: 20px;
 }

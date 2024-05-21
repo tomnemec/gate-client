@@ -2,7 +2,12 @@
   <article class="instruction training-text">
     <span class="title" *ngIf="language === 'uk'">Safety Instructions</span>
     <span class="title" *ngIf="language === 'cz'">Bezpečností Instrukce</span>
-    <p>{{ safetyInstructions }}</p>
+    <p *ngIf="language === 'uk'">
+      {{ safetyInstructions.safetyInstructionsEN }}
+    </p>
+    <p *ngIf="language === 'cz'">
+      {{ safetyInstructions.safetyInstructionsCZ }}
+    </p>
   </article>
   <article class="instruction">
     <h2 *ngIf="language === 'uk'">

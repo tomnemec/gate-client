@@ -17,7 +17,7 @@ export class TrainingSlideComponent implements OnInit {
   @Output() slideExported: EventEmitter<number> = new EventEmitter<number>();
 
   triggerFadeout = false;
-  safetyInstructions: string = '';
+  safetyInstructions: Settings = {} as Settings;
 
   constructor(private apiClient: ApiClientService) {}
 
@@ -57,10 +57,11 @@ export class TrainingSlideComponent implements OnInit {
   getSettings() {
     this.apiClient.getAll<Settings[]>('settings').subscribe({
       next: (settings) => {
-        this.safetyInstructions = settings[0].safetyInstructions;
+        this.safetyInstructions = settings[0];
       },
       complete: () => {
         console.log('Settings fetched');
+        console.log(this.safetyInstructions);
       },
       error: (error) => {
         console.error(error);

@@ -6,29 +6,21 @@ p {
   color: #000;
   overflow-y: auto;
   border-radius: 5px 0 0 5px;
-  max-height: 450px;
   overflow-y: scroll;
+  justify-content: start;
 }
 .training-text p {
   padding: 0 40px;
-  height: 300px;
   color: var(--grey-color);
-}
-.training-text ul {
-  padding: 0 40px;
-  height: 300px;
-  color: var(--grey-color);
-}
-.training-text li {
-  margin: 10px 0;
-}
-.training-text ul li::marker {
-  color: gray;
-  width: 1em;
-  border-radius: 5px;
+  margin-bottom: 30px;
 }
 .training-text::-webkit-scrollbar {
-  width: 5px;
+  width: 10px;
+  background: rgb(230, 228, 228);
+}
+.training-text::-webkit-scrollbar-thumb {
+  background: rgb(161, 161, 161);
+  border-radius: 10px;
 }
 .title {
   font-size: 2em;

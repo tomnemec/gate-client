@@ -11,6 +11,7 @@ export class SettingsComponent {
   constructor(private apiClient: ApiClientService) {}
   safetyInstructionsCZ: string = '';
   safetyInstructionsEN: string = '';
+  status: string = '';
   ngOnInit() {
     this.getSettings();
   }
@@ -41,9 +42,14 @@ export class SettingsComponent {
       },
       complete: () => {
         console.log('Settings updated');
+        this.status = 'complete';
+        setTimeout(() => {
+          this.status = '';
+        }, 3000);
       },
       error: (error) => {
         console.error(error);
+        this.status = 'error';
       },
     });
   }

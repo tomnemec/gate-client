@@ -21,4 +21,6 @@
     rows="20"
   ></textarea>
   <button class="btn btn-primary" (click)="updateSettings()">Save</button>
+  <span *ngIf="status === 'complete'">Update completed.</span>
+  <span *ngIf="status === 'error'">Error during update.</span>
 </section>

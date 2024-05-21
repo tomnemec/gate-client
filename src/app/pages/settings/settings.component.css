@@ -1,8 +1,9 @@
 section {
   flex-direction: column;
   justify-content: start;
-  padding-top: 100px;
   gap: 10px;
+  padding: 20px;
+  padding-top: 100px;
 }
 textarea {
   border-radius: 5px;

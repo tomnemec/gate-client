@@ -7,15 +7,37 @@
 <section class="card">
   <img src="assets/scan.jpg" alt="" class="hero-img" />
   <article class="instruction">
-    <h1>
+    <h1 *ngIf="language === 'uk'">
       Welcome to<br />
       Husqvarna Manufacturing
     </h1>
-    <p>
+    <h1 *ngIf="language === 'cz'">
+      Vítejte v<br />
+      Husqvarna Manufacturing
+    </h1>
+    <p *ngIf="language === 'uk'">
       To proceed please <b>scan QR code</b> and follow instruction.<br />
       If code you dont have code or it is not working proceed with Manual
       Typing.
     </p>
-    <button class="btn btn-primary" (click)="nextSlide()">Manual Typing</button>
+    <p *ngIf="language === 'cz'">
+      Prosím <b>naskenujte QR kód</b> a pokračujte dle instrukcí.<br />
+      Pokud kód nemáte nebo je nefunkční, tak pokračujte tlačítkem "Manuální
+      Zadávání".
+    </p>
+    <button
+      *ngIf="language === 'uk'"
+      class="btn btn-primary"
+      (click)="nextSlide()"
+    >
+      Manual Typing
+    </button>
+    <button
+      *ngIf="language === 'cz'"
+      class="btn btn-primary"
+      (click)="nextSlide()"
+    >
+      Manuální Zadávání
+    </button>
   </article>
 </section>

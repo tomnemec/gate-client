@@ -1,13 +1,31 @@
 <section class="card">
   <article class="instruction training-text">
-    <span class="title">Safety Instructions</span>
+    <span class="title" *ngIf="language === 'uk'">Safety Instructions</span>
+    <span class="title" *ngIf="language === 'cz'">Bezpečností Instrukce</span>
     <p>{{ safetyInstructions }}</p>
   </article>
   <article class="instruction">
-    <h2>
+    <h2 *ngIf="language === 'uk'">
       By entering this area, you agree to follow the safety instructions and
       consent to the storage of provided data in the HMCZ database.
     </h2>
-    <button class="btn btn-primary" (click)="createVisit()">Agree</button>
+    <h2 *ngIf="language === 'cz'">
+      Vstupem do areálu souhlasíte s dodržováním bezpečnostních pokynů a
+      souhlasíte s uchováním poskytnutých dat v databázi HMCZ.
+    </h2>
+    <button
+      *ngIf="language === 'uk'"
+      class="btn btn-primary"
+      (click)="createVisit()"
+    >
+      Agree
+    </button>
+    <button
+      *ngIf="language === 'cz'"
+      class="btn btn-primary"
+      (click)="createVisit()"
+    >
+      Souhlasím
+    </button>
   </article>
 </section>

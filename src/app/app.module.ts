@@ -29,6 +29,7 @@ import { VisitsOverviewComponent } from './pages/visits-overview/visits-overview
 import { ApiClientService } from './services/api-client.service';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { KeysAdministrationComponent } from './pages/keys-administration/keys-administration.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { KeysAdministrationComponent } from './pages/keys-administration/keys-ad
     KeysAdministrationComponent,
     KeyScanComponent,
     KeyFormComponent,
+    LoginComponent,
     HomeComponent,
     NavbarComponent,
     VisitorSlideComponent,
@@ -95,6 +97,11 @@ import { KeysAdministrationComponent } from './pages/keys-administration/keys-ad
       {
         path: 'settings',
         component: SettingsComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'login',
+        component: LoginComponent,
         pathMatch: 'full',
       },
     ]),

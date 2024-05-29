@@ -30,6 +30,7 @@ import { ApiClientService } from './services/api-client.service';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { KeysAdministrationComponent } from './pages/keys-administration/keys-administration.component';
 import { LoginComponent } from './pages/login/login.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -73,11 +74,13 @@ import { LoginComponent } from './pages/login/login.component';
         path: '',
         component: HomeComponent,
         pathMatch: 'full',
+        canActivate: [AuthGuardService],
       },
       {
         path: 'visits-overview',
         component: VisitsOverviewComponent,
         pathMatch: 'full',
+        canActivate: [AuthGuardService],
       },
       {
         path: 'key-rental',
@@ -87,6 +90,7 @@ import { LoginComponent } from './pages/login/login.component';
       {
         path: 'key-rentals-overview',
         component: KeyRentalsOverviewComponent,
+        canActivate: [AuthGuardService],
         pathMatch: 'full',
       },
       {

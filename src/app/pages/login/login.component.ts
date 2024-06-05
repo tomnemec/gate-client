@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserLogin } from 'src/app/resources/userLogin';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -12,7 +13,12 @@ export class LoginComponent {
     email: '',
     password: '',
   };
-  constructor(private loginService: LoginService) {}
+  ngOnInit() {
+    if (this.loginService.isLoggedIn()) {
+      this.router.navigate(['']);
+    }
+  }
+  constructor(private loginService: LoginService, private router: Router) {}
   login() {
     this.loginService.login(this.userToLogin).subscribe({
       next: (r: { token: string }) => {

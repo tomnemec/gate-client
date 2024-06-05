@@ -31,6 +31,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { KeysAdministrationComponent } from './pages/keys-administration/keys-administration.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { AdminAuthService } from './services/admin-auth.service';
 
 @NgModule({
   declarations: [
@@ -96,11 +97,13 @@ import { AuthGuardService } from './services/auth-guard.service';
       {
         path: 'key-administration',
         component: KeysAdministrationComponent,
+        canActivate: [AdminAuthService],
         pathMatch: 'full',
       },
       {
         path: 'settings',
         component: SettingsComponent,
+        canActivate: [AdminAuthService],
         pathMatch: 'full',
       },
       {

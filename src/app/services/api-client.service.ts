@@ -6,10 +6,10 @@ import { Injectable } from '@angular/core';
 })
 export class ApiClientService {
   //localurl for testing
-  url = 'http://localhost:5080/api/';
+  //url = 'http://localhost:5080/api/';
 
   //production url
-  // url = '/gate/api/';
+  url = '/gateapi/api/';
   constructor(private http: HttpClient) {}
 
   getAll<T>(url: string) {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -7,13 +8,15 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(private loginService: LoginService) {}
-
+  constructor(private loginService: LoginService, private router: Router) {}
   ngOnInit(): void {}
   logout() {
     localStorage.removeItem('token');
   }
   isLoggedIn() {
     return this.loginService.isLoggedIn();
+  }
+  shouldShowLogout(): boolean {
+    return this.router.url !== '/visits';
   }
 }

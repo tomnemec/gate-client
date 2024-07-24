@@ -1,6 +1,10 @@
 <nav>
   <span class="title">Husqvarna Guest Portal</span>
-  <button *ngIf="isLoggedIn()" class="btn-logout" (click)="logout()">
+  <button
+    *ngIf="isLoggedIn() && shouldShowLogout()"
+    class="btn-logout"
+    (click)="logout()"
+  >
     Logout
   </button>
   <img src="assets/hsqlogo.png" alt="" class="logo" />

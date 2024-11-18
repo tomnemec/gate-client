@@ -10,7 +10,7 @@ import { NotificationData } from 'src/app/resources/notificationData';
   animations: [slideInOut, fadeInOut],
 })
 export class VisitPageComponent implements OnInit {
-  language = 'uk';
+  language = 'cz';
   slide = 1;
   notifData = {} as NotificationData;
   saveVisit: SaveVisit = {} as SaveVisit;

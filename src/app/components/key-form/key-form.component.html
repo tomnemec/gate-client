@@ -1,13 +1,17 @@
 <section class="card">
   <img src="assets/record.jpg" alt="" class="hero-img" />
   <article class="instruction">
-    <h1>Key Rent Details</h1>
-    <label class="form-label" for="keycode">KeyCode</label>
+    <h1 *ngIf="language=='uk'">Key Rent Details</h1>
+    <h1 *ngIf="language=='cz'">Detaily pro zapůjčení klíče</h1>
+    <label class="form-label"  *ngIf="language=='uk'" for="keycode">KeyCode</label>
+    <label class="form-label"  *ngIf="language=='cz'" for="keycode">Čárový kód klíče</label>
     <input id="keycode" type="text" [(ngModel)]="keyRent.keyCode" />
-    <label class="form-label" for="rfid">RFID</label>
+    <label class="form-label" *ngIf="language=='uk'" for="rfid">RFID</label>
+    <label class="form-label" *ngIf="language=='cz'" for="rfid">RFID (čipová karta)</label>
     <input id="rfid" type="text" [(ngModel)]="keyRent.RFID" />
     <div class="row">
-      <button class="btn btn-primary" (click)="createRent()">Rent Key</button>
+      <button class="btn btn-primary" *ngIf="language=='uk'"(click)="createRent()">Rent Key</button>
+      <button class="btn btn-primary" *ngIf="language=='cz'"(click)="createRent()">Zapůjčit klíč</button>
     </div>
   </article>
 </section>

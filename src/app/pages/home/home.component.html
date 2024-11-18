@@ -1,32 +1,32 @@
 <section>
   <div class="slider">
-    <div class="card" [routerLink]="'/visits'">
+    <div class="card" [routerLink]="'visits'">
       <img src="./assets/scan.jpg" alt="" />
-      <span class="card-title">Visitor</span>
+      <span class="card-title">Visitor/Návštěva</span>
     </div>
     <div class="card" [routerLink]="'/key-rental'">
       <img src="./assets/key.jpg" alt="" />
-      <span class="card-title">Keys</span>
+      <span class="card-title">Keys/Zapůjčení klíčů</span>
     </div>
-    <div class="card" [routerLink]="'/qr-generator'">
+ <!--   <div class="card" [routerLink]="'/qr-generator'">
       <img src="./assets/scan.jpg" alt="" />
       <span class="card-title">QR generator</span>
-    </div>
-    <div class="card" [routerLink]="'/visits-overview'">
+    </div>-->
+    <div class="card" *ngIf="logged" [routerLink]="'/visits-overview'" >
       <img src="./assets/profile.png" alt="" />
-      <span class="card-title">Visitors overview</span>
+      <span class="card-title">Přehled návštěv</span>
     </div>
-    <div class="card" [routerLink]="'/key-rentals-overview'">
+    <div class="card" *ngIf="logged"  [routerLink]="'/key-rentals-overview'">
       <img src="./assets/overview.svg" alt="" />
-      <span class="card-title">Rent overviews</span>
+      <span class="card-title">Přehled výpůjček klíčů</span>
     </div>
-    <div class="card" [routerLink]="'/key-administration'">
+    <div class="card" *ngIf="logged"  [routerLink]="'/key-administration'">
       <img src="./assets/key.jpg" alt="" />
-      <span class="card-title">Key admin</span>
+      <span class="card-title">Administrace klíčů</span>
     </div>
-    <div class="card" [routerLink]="'/settings'">
+    <div class="card" *ngIf="logged"  [routerLink]="'/settings'">
       <img src="./assets/settings.svg" alt="" />
-      <span class="card-title">Settings</span>
+      <span class="card-title">Nastavení</span>
     </div>
   </div>
 </section>

@@ -13,6 +13,7 @@ export class KeyFormComponent {
   @Output() dataExported: EventEmitter<NotificationData> =
     new EventEmitter<NotificationData>();
   @Output() slideExported: EventEmitter<number> = new EventEmitter<number>();
+  @Input() language: string = ''; 
 
   constructor(private apiClinet: ApiClientService) {}
   createRent() {
@@ -21,7 +22,7 @@ export class KeyFormComponent {
       .create<SaveKeyRental>(this.keyRent, 'key-rentals')
       .subscribe({
         next: (data) => {
-          console.log(data);
+         
         },
         error: (err) => {
           console.log(err);

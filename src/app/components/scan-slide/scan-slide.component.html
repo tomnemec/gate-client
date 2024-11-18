@@ -1,9 +1,4 @@
-<input
-  style="opacity: 0"
-  #hiddenInput
-  type="text"
-  (keydown.enter)="handleScan(hiddenInput.value)"
-/>
+<input style="opacity: 0" #hiddenInput type="text" (keydown.enter)="handleScan(hiddenInput.value)" />
 <section class="card">
   <img src="assets/scan.jpg" alt="" class="hero-img" />
   <article class="instruction">
@@ -25,18 +20,10 @@
       Pokud kód nemáte nebo je nefunkční, tak pokračujte tlačítkem "Manuální
       Zadávání".
     </p>
-    <button
-      *ngIf="language === 'uk'"
-      class="btn btn-primary"
-      (click)="nextSlide()"
-    >
+    <button *ngIf="language === 'uk'" class="btn btn-primary" (click)="nextSlide()">
       Manual Typing
     </button>
-    <button
-      *ngIf="language === 'cz'"
-      class="btn btn-primary"
-      (click)="nextSlide()"
-    >
+    <button *ngIf="language === 'cz'" class="btn btn-primary" (click)="nextSlide()">
       Manuální Zadávání
     </button>
   </article>

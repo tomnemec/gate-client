@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {}
   logout() {
     localStorage.removeItem('token');
+    this.refreshPage();
   }
   isLoggedIn() {
     return this.loginService.isLoggedIn();
@@ -19,4 +20,10 @@ export class NavbarComponent implements OnInit {
   shouldShowLogout(): boolean {
     return this.router.url !== '/visits';
   }
+
+
+  refreshPage() {
+    window.location.reload();
+  }
+
 }

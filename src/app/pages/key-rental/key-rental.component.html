@@ -1,32 +1,33 @@
+
 <section>
-  <notification
-    *ngIf="notifData.notifStatus"
-    [notifData]="notifData"
-    @fadeInOut
-  ></notification>
-  <key-scan
-    [title]="'Key'"
-    [imgName]="'key.jpg'"
-    [description]="getText('keyScan-eng')"
-    *ngIf="slide === 1"
-    (dataExported)="handleExportedData($event)"
-    (scanKey)="handleScan($event)"
-    @slideInOut
-  ></key-scan>
-  <key-scan
-    [title]="'RFID'"
-    [imgName]="'card.jpg'"
-    [description]="getText('rfidScan-eng')"
-    *ngIf="slide === 2"
-    (dataExported)="handleExportedData($event)"
-    (scanKey)="handleScan($event)"
-    @slideInOut
-  ></key-scan>
-  <key-form
-    [keyRent]="keyRentToSave"
-    *ngIf="slide === 3"
-    (slideExported)="handleExportedData($event)"
-    (dataExported)="handleNotifStatus($event)"
-  ></key-form>
+  <div class="languages">
+    <img
+      (click)="languageChange('cz')"
+      src="./assets/cz.png"
+      alt=""
+      class="flag"
+    /><img
+      (click)="languageChange('uk')"
+      src="./assets/uk.png"
+      alt=""
+      class="flag"
+    />
+  </div>
+ 
+  <notification *ngIf="notifData.notifStatus" [notifData]="notifData" @fadeInOut></notification>
+  <key-scan [title]="'Key'" [titulek]="'klíč'" [language]="language" [imgName]="'key.jpg'"[description]="getText('keyScan-eng')" *ngIf="slide === 1 && language=='uk'"
+    (dataExported)="handleExportedData($event)" (scanKey)="handleScan($event)" @slideInOut></key-scan>
+
+    <key-scan [title]="'Key'" [titulek]="'klíč'" [language]="language" [imgName]="'key.jpg'"[description]="getText('keyScan-cz')" *ngIf="slide === 1 && language=='cz'"
+    (dataExported)="handleExportedData($event)" (scanKey)="handleScan($event)" @slideInOut></key-scan>
+
+  <key-scan [title]="'RFID'" [titulek]="'RFID'" [language]="language" [imgName]="'card.jpg'" [description]="getText('rfidScan-eng')" *ngIf="slide === 2 && language=='uk'"
+    (dataExported)="handleExportedData($event)" (scanKey)="handleScan($event)" @slideInOut></key-scan>
+
+    <key-scan [title]="'RFID'" [titulek]="'RFID'" [language]="language" [imgName]="'card.jpg'" [description]="getText('rfidScan-cz')" *ngIf="slide === 2 && language=='cz'"
+    (dataExported)="handleExportedData($event)" (scanKey)="handleScan($event)" @slideInOut></key-scan>
+
+  <key-form [keyRent]="keyRentToSave"  [language]="language" *ngIf="slide === 3" (slideExported)="handleExportedData($event)"
+    (dataExported)="handleNotifStatus($event)"></key-form>
   <stepper [slide]="slide"></stepper>
 </section>

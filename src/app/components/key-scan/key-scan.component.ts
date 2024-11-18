@@ -22,12 +22,18 @@ export class KeyScanComponent {
 
   keyCode: string = '';
 
+  @Input() language: string = ''; 
+  @Input() titulek: string = ''; 
+
+
   ngAfterViewInit(): void {
     // Lock the focus on the hidden input field after the view is initialized
+
+ 
     if (this.hiddenInput) {
       this.hiddenInput.nativeElement.focus();
     }
-
+   
     // Add event listener to capture keydown events globally
     document.addEventListener('keydown', this.handleGlobalKeyDown.bind(this));
   }
@@ -45,6 +51,7 @@ export class KeyScanComponent {
   }
 
   nextSlide(): void {
+  
     if (this.title === 'Key') this.dataExported.emit(2);
     if (this.title === 'RFID') this.dataExported.emit(3);
   }

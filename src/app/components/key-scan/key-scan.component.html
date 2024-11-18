@@ -7,10 +7,12 @@
 <section class="card">
   <img [src]="'assets/' + imgName" alt="" class="hero-img" />
   <article class="instruction">
-    <h1>Please scan {{ title }} to proceed</h1>
+    <h1 *ngIf="language=='uk'">Please scan {{ title }} to proceed</h1>
+    <h1 *ngIf="language=='cz'">Prosím naskenujte {{ titulek }}  pro pokračování</h1>
     <p>
       {{ description }}
     </p>
-    <button class="btn btn-primary" (click)="nextSlide()">Manual Typing</button>
+  <button class="btn btn-primary" *ngIf="language=='uk'" (click)="nextSlide()">Manual Typing </button>
+  <button class="btn btn-primary" *ngIf="language=='cz'"(click)="nextSlide()">Manuální zadání</button>
   </article>
 </section>

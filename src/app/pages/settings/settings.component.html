@@ -1,10 +1,9 @@
 <section>
-  <h1>Settings</h1>
+  <h1>Nastavení</h1>
   <p class="note">
-    Text settings for the application. Update the text and click "Save" to save
-    the changes.
+    Nastavení textu pro aplikaci. Aktualizujte text a klikněte na „Uložit“ pro uložení změn.
   </p>
-  <label class="form-label" for="">Safety Instructions CZ:</label>
+  <label class="form-label" for="">Safety Instructions/Bezpečnostní pokyny CZ:</label>
   <textarea
     [(ngModel)]="safetyInstructionsCZ"
     name=""
@@ -12,7 +11,7 @@
     cols="80"
     rows="20"
   ></textarea>
-  <label class="form-label" for="">Safety Instructions EN:</label>
+  <label class="form-label" for="">Safety Instructions/Bezpečnostní pokyny EN:</label>
   <textarea
     [(ngModel)]="safetyInstructionsEN"
     name=""
@@ -20,7 +19,7 @@
     cols="80"
     rows="20"
   ></textarea>
-  <button class="btn btn-primary" (click)="updateSettings()">Save</button>
-  <span *ngIf="status === 'complete'">Update completed.</span>
-  <span *ngIf="status === 'error'">Error during update.</span>
+  <button class="btn btn-primary" (click)="updateSettings()">Uložit</button>
+  <span *ngIf="status === 'complete'">Hotovo.</span>
+  <span *ngIf="status === 'error'">Chyba.</span>
 </section>

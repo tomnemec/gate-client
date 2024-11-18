@@ -7,17 +7,16 @@
     action="update"
   ></dialog-popup>
   <div class="container">
-    <h1>Rents Overview</h1>
+    <h1>Přehled výpůjček</h1>
     <p class="note">
-      Overview of all rents. You can search by key code, filter by date range
-      etc. You can manually return a key by clicking the "Return" button.
+      Přehled všech výpůjček klíčů. Můžete vyhledávat podle kódu klíče, filtrovat podle časového rozmezí apod. Klíč můžete ručně vrátit kliknutím na tlačítko „Vrátit“.
     </p>
     <div class="row">
       <input
         [(ngModel)]="filter.searchTerm"
         type="text"
         class="input-control"
-        placeholder="...search"
+        placeholder="...hledat"
         (keyup)="handleSearch()"
       />
       <input type="date" class="input-control" [(ngModel)]="filter.fromDate" />
@@ -32,15 +31,15 @@
     <table>
       <thead>
         <tr>
-          <th>Key Code</th>
-          <th>Room</th>
+          <th>Kód klíče</th>
+          <th>Místnost</th>
           <th>Status</th>
-          <th>RFID</th>
-          <th>Action</th>
+          <th>RFID kód</th>
+          <th>Akce</th>
         </tr>
       </thead>
       <p style="text-align: center; width: 100%" *ngIf="tableData.length === 0">
-        No data
+        Žádná data
       </p>
       <tbody>
         <tr *ngFor="let rental of tableData">
@@ -55,7 +54,7 @@
               class="btn btn-primary"
               (click)="openDialog(rental, 'Returned')"
             >
-              Return
+              Zpět
             </button>
           </td>
         </tr>

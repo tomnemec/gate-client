@@ -75,7 +75,7 @@ import { AdminAuthService } from './services/admin-auth.service';
         path: '',
         component: HomeComponent,
         pathMatch: 'full',
-        canActivate: [AuthGuardService],
+       // canActivate: [AuthGuardService],
       },
       {
         path: 'visits-overview',

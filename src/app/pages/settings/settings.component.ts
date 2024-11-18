@@ -18,12 +18,10 @@ export class SettingsComponent {
   getSettings() {
     this.apiClient.getAll<Settings[]>('settings').subscribe({
       next: (settings) => {
-        console.log(settings);
         this.safetyInstructionsCZ = settings[0].safetyInstructionsCZ;
         this.safetyInstructionsEN = settings[0].safetyInstructionsEN;
       },
       complete: () => {
-        console.log('Settings fetched');
       },
       error: (error) => {
         console.error(error);

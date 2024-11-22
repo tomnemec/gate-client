@@ -5,5 +5,6 @@ export interface Visit {
   companyName: string;
   host: string;
   visitDate: Date;
+  VisitDateEnd: Date;
   visitStatus: string;
 }

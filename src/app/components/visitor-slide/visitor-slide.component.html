@@ -3,56 +3,18 @@
   <article class="instruction">
     <h1 *ngIf="language === 'uk'">Visitor Details</h1>
     <h1 *ngIf="language === 'cz'">Detail Návštěvníka</h1>
-    <input
-      *ngIf="language === 'uk'"
-      type="text"
-      [(ngModel)]="visitToSave.name"
-      placeholder="Full Name"
-    />
-    <input
-      *ngIf="language === 'cz'"
-      type="text"
-      [(ngModel)]="visitToSave.name"
-      placeholder="Celé Jméno"
-    />
+    <input *ngIf="language === 'uk'" type="text" [(ngModel)]="visitToSave.name" placeholder="Full Name" />
+    <input *ngIf="language === 'cz'" type="text" [(ngModel)]="visitToSave.name" placeholder="Celé Jméno" />
     <input type="email" [(ngModel)]="visitToSave.email" placeholder="Email" />
-    <input
-      *ngIf="language === 'uk'"
-      type="text"
-      [(ngModel)]="visitToSave.companyName"
-      placeholder="Company"
-    />
-    <input
-      *ngIf="language === 'uk'"
-      type="text"
-      [(ngModel)]="visitToSave.host"
-      placeholder="Contact Person"
-    />
-    <input
-      *ngIf="language === 'cz'"
-      type="text"
-      [(ngModel)]="visitToSave.companyName"
-      placeholder="Firma"
-    />
-    <input
-      *ngIf="language === 'cz'"
-      type="text"
-      [(ngModel)]="visitToSave.host"
-      placeholder="Kontaktní osoba"
-    />
+    <input *ngIf="language === 'uk'" type="text" [(ngModel)]="visitToSave.companyName" placeholder="Company" />
+    <input *ngIf="language === 'uk'" type="text" [(ngModel)]="visitToSave.host" placeholder="Contact Person" />
+    <input *ngIf="language === 'cz'" type="text" [(ngModel)]="visitToSave.companyName" placeholder="Firma" />
+    <input *ngIf="language === 'cz'" type="text" [(ngModel)]="visitToSave.host" placeholder="Kontaktní osoba" />
     <div class="row">
-      <button
-        *ngIf="language === 'uk'"
-        class="btn btn-primary"
-        (click)="triggerTraining()"
-      >
+      <button *ngIf="language === 'uk'" class="btn btn-primary" (click)="triggerTraining()">
         Continue
       </button>
-      <button
-        *ngIf="language === 'cz'"
-        class="btn btn-primary"
-        (click)="triggerTraining()"
-      >
+      <button *ngIf="language === 'cz'" class="btn btn-primary" (click)="triggerTraining()">
         Pokračovat
       </button>
     </div>

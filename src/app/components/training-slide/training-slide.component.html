@@ -18,18 +18,10 @@
       Vstupem do areálu souhlasíte s dodržováním bezpečnostních pokynů a
       souhlasíte s uchováním poskytnutých dat v databázi HMCZ.
     </h2>
-    <button
-      *ngIf="language === 'uk'"
-      class="btn btn-primary"
-      (click)="createVisit()"
-    >
+    <button *ngIf="language === 'uk'" class="btn btn-primary" (click)="createVisit()">
       Agree
     </button>
-    <button
-      *ngIf="language === 'cz'"
-      class="btn btn-primary"
-      (click)="createVisit()"
-    >
+    <button *ngIf="language === 'cz'" class="btn btn-primary" (click)="createVisit()">
       Souhlasím
     </button>
   </article>

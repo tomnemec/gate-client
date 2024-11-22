@@ -1,45 +1,15 @@
 <section>
   <div class="languages">
-    <img
-      (click)="languageChange('cz')"
-      src="./assets/cz.png"
-      alt=""
-      class="flag"
-    /><img
-      (click)="languageChange('uk')"
-      src="./assets/uk.png"
-      alt=""
-      class="flag"
-    />
+    <img (click)="languageChange('cz')" src="./assets/cz.png" alt="" class="flag" /><img (click)="languageChange('uk')"
+      src="./assets/uk.png" alt="" class="flag" />
   </div>
-  <notification
-    *ngIf="notifData.notifStatus"
-    [notifData]="notifData"
-    @fadeInOut
-  ></notification>
-  <scan-slide
-    *ngIf="slide === 1"
-    [language]="language"
-    (dataExported)="handleExportedData($event)"
-    (scanVisit)="handleScan($event)"
-    @slideInOut
-  >
+  <notification *ngIf="notifData.notifStatus" [notifData]="notifData" @fadeInOut></notification>
+  <scan-slide *ngIf="slide === 1" [language]="language" (dataExported)="handleExportedData($event)"
+    (scanVisit)="handleScan($event)" @slideInOut>
   </scan-slide>
-  <visitor-slide
-    *ngIf="slide === 2"
-    [language]="language"
-    (dataExported)="handleExportedData($event)"
-    (notifExported)="handleNotifStatus($event)"
-    [visitToSave]="saveVisit"
-    @slideInOut
-  ></visitor-slide>
-  <training-slide
-    *ngIf="slide === 3"
-    [language]="language"
-    @slideInOut
-    [visitToSave]="saveVisit"
-    (dataExported)="handleNotifStatus($event)"
-    (slideExported)="handleExportedData($event)"
-  ></training-slide>
+  <visitor-slide *ngIf="slide === 2" [language]="language" (dataExported)="handleExportedData($event)"
+    (notifExported)="handleNotifStatus($event)" [visitToSave]="saveVisit" @slideInOut></visitor-slide>
+  <training-slide *ngIf="slide === 3" [language]="language" @slideInOut [visitToSave]="saveVisit"
+    (dataExported)="handleNotifStatus($event)" (slideExported)="handleExportedData($event)"></training-slide>
   <stepper [slide]="slide"></stepper>
 </section>

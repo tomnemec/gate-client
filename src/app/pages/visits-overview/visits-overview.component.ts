@@ -20,15 +20,30 @@ export class VisitsOverviewComponent {
     searchTerm: '',
   };
   totalPages: number = 5;
+  currentDate: Date = new Date();
+  valueDate: any;
 
   constructor(private apiClient: ApiClientService) {}
 
   ngOnInit() {
+    this.transformDate(this.currentDate);
+    this.filter.fromDate = this.valueDate;
+    this.filter.toDate = this.valueDate;
     this.getVisits();
   }
 
+  async transformDate(value: Date | null) {
+    if (value != null) {
+      const inputDate = new Date(value);
+      const year = inputDate.getFullYear();
+      const month = String(inputDate.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+      const day = String(inputDate.getDate()).padStart(2, '0');
+      const formattedDate = `${year}-${month}-${day}`;
+      this.valueDate = new Date(formattedDate).toLocaleDateString('fr-CA');
+      value = null;
+    }
+  }
   getVisits() {
-    console.log(this.filter);
     this.apiClient
       .getAll<Visit[]>(
         'visits?page=' +
@@ -58,6 +73,7 @@ export class VisitsOverviewComponent {
       companyName: visit.companyName,
       host: visit.host,
       visitDate: visit.visitDate,
+      visitDateEnd: this.currentDate,
       email: visit.email,
       visitStatus: status,
     };

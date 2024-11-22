@@ -7,7 +7,7 @@
     action="update"
   ></dialog-popup>
   <div class="container">
-    <h1>Přehled výpůjček</h1>
+    <h1>Přehled výpůjček klíčů</h1>
     <p class="note">
       Přehled všech výpůjček klíčů. Můžete vyhledávat podle kódu klíče, filtrovat podle časového rozmezí apod. Klíč můžete ručně vrátit kliknutím na tlačítko „Vrátit“.
     </p>
@@ -26,15 +26,20 @@
         (ngModelChange)="getRents()"
         [(ngModel)]="filter.toDate"
       />
-      <button (click)="getRents()">test</button>
+      <button class="btn btn-primary refresh" (click)="getRents()">
+        Zobrazit
+      </button>
+
     </div>
     <table>
       <thead>
         <tr>
+          <th>Datum od</th>
+          <th>Datum do</th>
           <th>Kód klíče</th>
           <th>Místnost</th>
           <th>Status</th>
-          <th>RFID kód</th>
+          <th>RFID kód uživatele</th>
           <th>Akce</th>
         </tr>
       </thead>
@@ -43,6 +48,9 @@
       </p>
       <tbody>
         <tr *ngFor="let rental of tableData">
+         
+          <td>{{ rental.startRentDate | date:'dd.MM.yyyy HH:mm:ss'}}</td>
+          <td>{{ rental.endRentDate | date:'dd.MM.yyyy HH:mm:ss' }}</td>
           <td>{{ rental.key.code }}</td>
           <td>{{ rental.key.room }}</td>
           <td>{{ rental.status }}</td>
@@ -54,7 +62,7 @@
               class="btn btn-primary"
               (click)="openDialog(rental, 'Returned')"
             >
-              Zpět
+              Vrátit
             </button>
           </td>
         </tr>

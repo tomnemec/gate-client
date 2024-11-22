@@ -16,11 +16,12 @@ export class VisitorSlideComponent implements OnInit {
   ngOnInit(): void {}
 
   triggerTraining() {
+    console.log(this.visitToSave)
     if (
-      this.visitToSave.name === '' ||
-      this.visitToSave.email === '' ||
-      this.visitToSave.companyName === '' ||
-      this.visitToSave.host === ''
+      this.visitToSave.name == null || '' ||
+      this.visitToSave.email == null ||'' ||
+      this.visitToSave.companyName == null ||'' ||
+      this.visitToSave.host == null || ''
     ) {
       console.log('ups');
       this.triggerNotif({

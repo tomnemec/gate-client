@@ -9,7 +9,7 @@ export class ApiClientService {
 url = 'http://localhost:5080/api/';
 
   //production url
-    //url = '/gateapi/api/';
+ //   url = '/gateapi/api/';
   constructor(private http: HttpClient) {}
 
   getAll<T>(url: string) {

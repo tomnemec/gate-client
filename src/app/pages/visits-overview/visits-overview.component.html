@@ -1,16 +1,15 @@
 <section>
   <div class="container">
-    <h1>Visits Overview</h1>
+    <h1>Přehled návštěv</h1>
     <p class="note">
-      Visits overview. You can search by name, filter by date range etc. You can
-      manually return a visit by clicking the "Return" button.
+      Můžete vyhledávat podle jména, filtrovat podle časového období atd. Návštěvu můžete ručně vrátit kliknutím na tlačítko „Vrátit“.
     </p>
     <div class="row">
       <input
         [(ngModel)]="filter.searchTerm"
         type="text"
         class="input-control"
-        placeholder="...search"
+        placeholder="...hledat"
         (keyup)="handleSearch()"
       />
       <input type="date" class="input-control" [(ngModel)]="filter.fromDate" />
@@ -21,23 +20,23 @@
         [(ngModel)]="filter.toDate"
       />
       <button class="btn btn-primary refresh" (click)="getVisits()">
-        Refresh
+        Zobrazit
       </button>
     </div>
     <table>
       <thead>
         <tr>
-          <th>Name</th>
+          <th>Jméno</th>
           <th>Email</th>
-          <th>Company</th>
+          <th>Společnost</th>
           <th>Host</th>
-          <th>Visit Date</th>
-          <th>Visit Status</th>
-          <th>Actions</th>
+          <th>Datum návštěvy</th>
+          <th>Staus návštěvy</th>
+          <th>Akce</th>
         </tr>
       </thead>
       <p style="text-align: center; width: 100%" *ngIf="tableData.length === 0">
-        No data
+        Žádná data
       </p>
       <tbody>
         <tr *ngFor="let visit of tableData">
@@ -45,14 +44,16 @@
           <td>{{ visit.email }}</td>
           <td>{{ visit.companyName }}</td>
           <td>{{ visit.host }}</td>
-          <td>{{ visit.visitDate | date }}</td>
+        
+          <td>{{ visit.visitDate | date:'dd.MM.yyyy HH:mm:ss' }}</td>
           <td>{{ visit.visitStatus }}</td>
           <td>
             <button
               class="btn btn-primary"
               (click)="updateVisit(visit, 'Finished')"
+              *ngIf="visit.visitStatus!='Finished'"
             >
-              Return
+              Dokončeno
             </button>
           </td>
         </tr>

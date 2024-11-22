@@ -13,6 +13,8 @@ export class KeyRentalsOverviewComponent {
   rentalsFromDB: KeyRental[] = [];
   tableData: KeyRental[] = [];
   rentToSave: SaveKeyRental = {} as SaveKeyRental;
+  valueDate: any;
+  currentDate: Date = new Date();
 
   filter = {
     fromDate: getDateString(new Date(), -7),
@@ -28,13 +30,37 @@ export class KeyRentalsOverviewComponent {
   constructor(private apiClient: ApiClientService) {}
 
   ngOnInit() {
+    this.transformDate(this.currentDate);
+    this.filter.fromDate = this.valueDate;
+    this.filter.toDate = this.valueDate;
     this.getRents();
-    console.log(this.showPopUp);
   }
+
+  async transformDate(value: Date | null) {
+    if (value != null) {
+      const inputDate = new Date(value);
+      const year = inputDate.getFullYear();
+      const month = String(inputDate.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+      const day = String(inputDate.getDate()).padStart(2, '0');
+      const formattedDate = `${year}-${month}-${day}`;
+      this.valueDate = new Date(formattedDate).toLocaleDateString('fr-CA');
+      value = null;
+    }
+  }
+
+
   getRents() {
-    this.apiClient.getAll<KeyRental[]>('key-rentals').subscribe({
+    this.apiClient.getAll<KeyRental[]>(
+      'key-rentals?page=' +
+        this.filter.page +
+        '&pageSize=' +
+        this.filter.pageSize +
+        '&fromDate=' +
+        this.filter.fromDate +
+        '&toDate=' +
+        this.filter.toDate
+    ).subscribe({
       next: (rentals) => {
-        console.log(rentals);
         this.rentalsFromDB = rentals;
         this.handleSearch(); // Refresh tableData when new data is fetched
       },
@@ -43,6 +69,20 @@ export class KeyRentalsOverviewComponent {
       },
     });
   }
+
+  getRents2() {
+    this.apiClient.getAll<KeyRental[]>('key-rentals').subscribe({
+      next: (rentals) => {
+        this.rentalsFromDB = rentals;
+        this.handleSearch(); // Refresh tableData when new data is fetched
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
+  }
+
+
   handleSearch() {
     if (this.filter.searchTerm === '') {
       // If search term is empty, show all visits

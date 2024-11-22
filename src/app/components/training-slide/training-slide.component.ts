@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { NotificationData } from 'src/app/resources/notificationData';
 import { SaveVisit } from 'src/app/resources/save-visit';
 import { Settings } from 'src/app/resources/settings';
@@ -19,19 +20,18 @@ export class TrainingSlideComponent implements OnInit {
   triggerFadeout = false;
   safetyInstructions: Settings = {} as Settings;
 
-  constructor(private apiClient: ApiClientService) {}
+  constructor(private apiClient: ApiClientService, private router: Router) {}
 
   ngOnInit(): void {
     this.getSettings();
   }
 
   createVisit() {
+    this.visitToSave.visitStatus="New";
     this.apiClient.create<SaveVisit>(this.visitToSave, 'visits').subscribe({
       next: (response) => {
-        console.log(response);
       },
       error: (error) => {
-        console.error(error);
         console.log(error.error.message);
         this.triggerNotif({
           notifStatus: 'Error',
@@ -60,8 +60,6 @@ export class TrainingSlideComponent implements OnInit {
         this.safetyInstructions = settings[0];
       },
       complete: () => {
-        console.log('Settings fetched');
-        console.log(this.safetyInstructions);
       },
       error: (error) => {
         console.error(error);

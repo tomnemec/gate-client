@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NotificationData } from 'src/app/resources/notificationData';
 import { SaveKeyRental } from 'src/app/resources/save-keyRental';
@@ -15,7 +16,7 @@ export class KeyFormComponent {
   @Output() slideExported: EventEmitter<number> = new EventEmitter<number>();
   @Input() language: string = ''; 
 
-  constructor(private apiClinet: ApiClientService) {}
+  constructor(private apiClinet: ApiClientService, private router: Router) {}
   createRent() {
     this.keyRent.status = 'Rented';
     this.apiClinet
@@ -28,17 +29,19 @@ export class KeyFormComponent {
           console.log(err);
           this.triggerNotif({
             notifStatus: 'Error',
-            notifText: err.error || 'Rent registration failed!',
+            notifText: err.error || 'Zápůjčka neúspěšná!',
             notifIcon: 'bi bi-x-circle',
           });
         },
         complete: () => {
           this.triggerNotif({
-            notifStatus: 'Completed',
-            notifText: 'Rent registered successfully!',
+            notifStatus: 'Hotovo',
+            notifText: 'Zápůjčka byla úspěšná',
             notifIcon: 'bi bi-check-circle',
           });
           this.slideExported.emit(1);
+          window.setTimeout(() => {this.router.navigate(['/']);
+          }, 3000);
         },
       });
   }

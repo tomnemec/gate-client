@@ -7,32 +7,30 @@
     [action]="dialogAction"
   ></dialog-popup>
   <div class="container">
-    <h1>Keys Overview</h1>
+    <h1>Nastavení klíčů</h1>
     <p class="note">
-      Fill in the fields to create a new key record. Click on the "+" button to
-      save the record. If Updated or Deleted, the record will be updated or
-      deleted from the database with provided values.
+      Vyplňte pole pro vytvoření nového záznamu klíče. Kliknutím na tlačítko „+“ záznam uložíte. Pokud bude záznam aktualizován nebo smazán, bude aktualizován nebo odstraněn z databáze s uvedenými hodnotami.
     </p>
     <div class="row">
       <input
         [(ngModel)]="filter.searchTerm"
         type="text"
-        placeholder="...search"
+        placeholder="...hledat"
       />
-      <input placeholder="Key Code" type="text" [(ngModel)]="keyToSave.code" />
-      <input placeholder="Key Room" type="text" [(ngModel)]="keyToSave.room" />
+      <input placeholder="Kód klíče" type="text" [(ngModel)]="keyToSave.code" />
+      <input placeholder="Místnost" type="text" [(ngModel)]="keyToSave.room" />
       <button class="btn btn-primary" (click)="createKeyRecord()">+</button>
     </div>
     <table>
       <thead>
         <tr>
-          <th>Key Code</th>
-          <th>Room</th>
-          <th>Action</th>
+          <th>Kód klíče</th>
+          <th>Místnost</th>
+          <th>Akce</th>
         </tr>
       </thead>
       <p style="text-align: center; width: 100%" *ngIf="keys.length === 0">
-        No data
+        Žádná data
       </p>
       <tbody>
         <tr *ngFor="let key of keys">
@@ -44,15 +42,15 @@
               class="btn btn-primary danger"
               (click)="openDialog(key, 'delete')"
             >
-              Delete
+              Smazat
             </button>
-            <button
+      <!--     <button
               style="padding: 10px 20px"
               class="btn btn-primary"
               (click)="openDialog(key, 'update')"
             >
-              Update
-            </button>
+              Aktualizovat
+            </button>--> 
           </td>
         </tr>
       </tbody>

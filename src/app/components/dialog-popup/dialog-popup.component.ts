@@ -32,7 +32,6 @@ export class DialogPopupComponent {
       .subscribe({
         next: (visit) => {},
         complete: () => {
-          console.log('Record updated');
           this.popStatus.emit(false);
           window.location.reload();
         },
@@ -47,7 +46,6 @@ export class DialogPopupComponent {
     this.apiClient.delete(this.apiEndpoint).subscribe({
       next: (r) => {},
       complete: () => {
-        console.log('Record deleted');
         this.popStatus.emit(false);
         window.location.reload();
       },
